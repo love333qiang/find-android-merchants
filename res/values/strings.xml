@@ -1,5 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <string name="app_name">find-android-merchants</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <!-- activity login -->
+    <string name="activity_login_email_hint">账号</string>
+    <string name="activity_login_password_hint">密码</string>
+    <string name="activity_login_toast_emptyusername">输入的用户名不能为空！</string>
+    <string name="activiry_login_toast_emptypassword">输入的密码不能为空！</string>
+    <string name="activity_login_toast_login_error">登录失败</string>
+    <string name="activity_login_toast_network_error">网络错误</string>
+
+    <!-- automatic build -->
+
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_main">MainActivity</string>
 
 </resources>

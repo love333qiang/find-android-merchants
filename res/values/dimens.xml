@@ -1,0 +1,14 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    
+	<!-- activity login -->
+    <dimen name="activity_login_input_width">200dip</dimen>
+    <dimen name="activity_login_input_height">35dip</dimen>
+    <dimen name="activity_login_input_margin">20dip</dimen>
+    <dimen name="activity_login_input_email_top">250dip</dimen>
+    <dimen name="activity_login_input_fontsize">15sp</dimen>
+
+</resources>

@@ -6,99 +6,164 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.runyetech.find2.merchants.webservice.Find2MerchantsWebService;
 import com.runyetech.find2_android_merchants.R;
 
+/**
+ * @author YangFan 登录界面
+ * 
+ */
 public class LoginActivity extends Activity {
+
+	/** 输入用户名 */
+	private EditText editText_UserName;
+	/** 输入用户密码 */
+	private EditText editText_UserPswd;
+	/** 点击：登录按钮 */
+	private Button button_Login;
+	/** 点击：注入按钮 */
+	private Button button_Register;
+	/** 按键监听类 */
+	private ClickListener listener;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 
-		// add listeners
-		addListeners();
+		initUI();
 	}
 
-	private String getLoginName() {
-		EditText textLoginName = (EditText) findViewById(R.id.activityloginemail);
-		return textLoginName.getText().toString();
+	/**
+	 * 初始化控件
+	 */
+	private void initUI() {
+		listener = new ClickListener();
+
+		button_Login = (Button) findViewById(R.id.activity_login_button_Login);
+		button_Login.setOnClickListener(listener);
+
+		button_Register = (Button) findViewById(R.id.activity_login_button_Register);
+		button_Register.setOnClickListener(listener);
+
+		editText_UserName = (EditText) findViewById(R.id.activity_login_editText_UserName);
+		editText_UserPswd = (EditText) findViewById(R.id.activity_login_editText_UserPswd);
 	}
 
-	private String getLoginPassword() {
-		EditText textpassword = (EditText) findViewById(R.id.activityloginpassword);
-		return textpassword.getText().toString();
-	}
-
-	private void addListeners() {
-
-		// add password input finished listener
-		EditText passwordText = (EditText) findViewById(R.id.activityloginpassword);
-		passwordText.setOnEditorActionListener(new OnEditorActionListener() {
-
-			@Override
-			public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-				if (actionId == EditorInfo.IME_ACTION_DONE) {
-					//
-					String loginName = getLoginName();
-					String loginPassword = getLoginPassword();
-					if (loginName.length() > 0 && loginPassword.length() > 0) {
-						doLogin(loginName, loginPassword);
-						return true;
-					}
-				}
-				return false;
+	/**
+	 * @author YangFan 按键监听类
+	 * 
+	 */
+	class ClickListener implements OnClickListener {
+		public void onClick(View v) {
+			switch (v.getId()) {
+			case R.id.activity_login_button_Login:
+				button_Login_ClickListener();
+				break;
+			case R.id.activity_login_button_Register:
+				button_Register_ClickListener();
+				break;
 			}
-		});
-
-		// add login btn listener
-		findViewById(R.id.activityloginloginbtn).setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				String loginname = getLoginName();
-				String loginpassword = getLoginPassword();
-				int resid = -1;
-				if (loginname.length() <= 0) {
-					resid = R.string.activity_login_toast_emptyusername;
-				} else if (loginpassword.length() <= 0) {
-					resid = R.string.activiry_login_toast_emptypassword;
-				}
-
-				if (resid != -1) {
-					Toast.makeText(LoginActivity.this, getString(resid), Toast.LENGTH_SHORT).show();
-					return;
-				}
-
-				// do log in
-				doLogin(loginname, loginpassword);
-			}
-		});
-
-		// add register btn
-		findViewById(R.id.activityloginregisterbtn).setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-
-				// add extra data to intent
-				intent.putExtra("loginname", getLoginName());
-				intent.putExtra("loginpassword", getLoginPassword());
-
-				startActivity(intent);
-			}
-		});
+		}
 	}
+
+	private void button_Login_ClickListener() {
+		String userName, userPswd;
+		userName = editText_UserName.getText().toString().trim();
+		userPswd = editText_UserPswd.getText().toString().trim();
+		if (userName.length() > 0 && userPswd.length() > 0) {
+
+		} else {
+			Toast.makeText(this, "用户名或密码不能为空！", Toast.LENGTH_LONG).show();
+		}
+	}
+
+	private void button_Register_ClickListener() {
+		startActivity(new Intent(this, RegisterActivity.class));
+	}
+
+	// private String getLoginName() {
+	// EditText textLoginName = (EditText)
+	// findViewById(R.id.activityloginemail);
+	// return textLoginName.getText().toString();
+	// }
+	//
+	// private String getLoginPassword() {
+	// EditText textpassword = (EditText)
+	// findViewById(R.id.activityloginpassword);
+	// return textpassword.getText().toString();
+	// }
+	//
+	// private void addListeners() {
+	//
+	// // add password input finished listener
+	// EditText passwordText = (EditText)
+	// findViewById(R.id.activityloginpassword);
+	// passwordText.setOnEditorActionListener(new OnEditorActionListener() {
+	//
+	// @Override
+	// public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+	// if (actionId == EditorInfo.IME_ACTION_DONE) {
+	// //
+	// String loginName = getLoginName();
+	// String loginPassword = getLoginPassword();
+	// if (loginName.length() > 0 && loginPassword.length() > 0) {
+	// doLogin(loginName, loginPassword);
+	// return true;
+	// }
+	// }
+	// return false;
+	// }
+	// });
+	//
+	// // add login btn listener
+	// findViewById(R.id.activityloginloginbtn).setOnClickListener(new
+	// OnClickListener() {
+	// @Override
+	// public void onClick(View v) {
+	// String loginname = getLoginName();
+	// String loginpassword = getLoginPassword();
+	// int resid = -1;
+	// if (loginname.length() <= 0) {
+	// resid = R.string.activity_login_toast_emptyusername;
+	// } else if (loginpassword.length() <= 0) {
+	// resid = R.string.activiry_login_toast_emptypassword;
+	// }
+	//
+	// if (resid != -1) {
+	// Toast.makeText(LoginActivity.this, getString(resid),
+	// Toast.LENGTH_SHORT).show();
+	// return;
+	// }
+	//
+	// // do log in
+	// doLogin(loginname, loginpassword);
+	// }
+	// });
+	//
+	// // add register btn
+	// findViewById(R.id.activityloginregisterbtn).setOnClickListener(new
+	// OnClickListener() {
+	//
+	// @Override
+	// public void onClick(View v) {
+	// Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+	//
+	// // add extra data to intent
+	// intent.putExtra("loginname", getLoginName());
+	// intent.putExtra("loginpassword", getLoginPassword());
+	//
+	// startActivity(intent);
+	// }
+	// });
+	// }
 
 	private void doLogin(String loginname, String loginpassword) {
 		Find2MerchantsWebService.getInstance().requestLogin(loginname, loginpassword, new JsonHttpResponseHandler() {
@@ -126,7 +191,6 @@ public class LoginActivity extends Activity {
 				Toast.makeText(this, getString(R.string.activity_login_toast_login_error), Toast.LENGTH_SHORT).show();
 			}
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

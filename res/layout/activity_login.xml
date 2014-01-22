@@ -6,7 +6,7 @@
     tools:context=".LoginActivity" >
 
     <EditText
-        android:id="@+id/activityloginemail"
+        android:id="@+id/activity_login_editText_UserName"
         android:layout_width="@dimen/activity_login_input_width"
         android:layout_height="@dimen/activity_login_input_height"
         android:layout_alignParentTop="true"
@@ -15,15 +15,15 @@
         android:hint="@string/activity_login_email_hint"
         android:singleLine="true"
         android:textSize="@dimen/activity_login_input_fontsize" >
-		
+
         <requestFocus />
     </EditText>
 
-   <EditText
-        android:id="@+id/activityloginpassword"
+    <EditText
+        android:id="@+id/activity_login_editText_UserPswd"
         android:layout_width="@dimen/activity_login_input_width"
         android:layout_height="@dimen/activity_login_input_height"
-        android:layout_below="@+id/activityloginemail"
+        android:layout_below="@+id/activity_login_editText_UserName"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/activity_login_input_margin"
         android:hint="@string/activity_login_password_hint"
@@ -33,21 +33,21 @@
     </EditText>
 
     <Button
-        android:id="@+id/activityloginloginbtn"
+        android:id="@+id/activity_login_button_Login"
         android:layout_width="@dimen/activity_login_input_width"
         android:layout_height="@dimen/activity_login_input_height"
-        android:layout_below="@+id/activityloginpassword"
+        android:layout_below="@+id/activity_login_editText_UserPswd"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/activity_login_input_margin"
-        android:background="@drawable/activity_login_loginbtn" 
-        />
+        android:background="@drawable/activity_login_loginbtn" />
+
     <Button
-        android:id="@+id/activityloginregisterbtn"
+        android:id="@+id/activity_login_button_Register"
         android:layout_width="@dimen/activity_login_input_width"
         android:layout_height="@dimen/activity_login_input_height"
-        android:layout_below="@+id/activityloginloginbtn"
+        android:layout_below="@+id/activity_login_button_Login"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/activity_login_input_margin"
-        android:background="@drawable/activity_login_registerbtn"
-        />
+        android:background="@drawable/activity_login_registerbtn" />
+
 </RelativeLayout>

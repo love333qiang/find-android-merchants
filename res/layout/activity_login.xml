@@ -14,6 +14,7 @@
         android:layout_marginTop="@dimen/activity_login_input_email_top"
         android:hint="@string/activity_login_email_hint"
         android:singleLine="true"
+        android:text="l@gmail.com"
         android:textSize="@dimen/activity_login_input_fontsize" >
 
         <requestFocus />

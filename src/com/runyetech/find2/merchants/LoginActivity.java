@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.runyetech.find2.merchants.util.LogInfoPrint;
 import com.runyetech.find2.merchants.webservice.Find2MerchantsWebService;
 import com.runyetech.find2_android_merchants.R;
 
@@ -74,111 +75,56 @@ public class LoginActivity extends Activity {
 		}
 	}
 
+	/**
+	 * 登录按钮的事件处理
+	 */
 	private void button_Login_ClickListener() {
 		String userName, userPswd;
 		userName = editText_UserName.getText().toString().trim();
 		userPswd = editText_UserPswd.getText().toString().trim();
 		if (userName.length() > 0 && userPswd.length() > 0) {
-
+			doLogin(userName, userPswd);
 		} else {
 			Toast.makeText(this, "用户名或密码不能为空！", Toast.LENGTH_LONG).show();
 		}
 	}
 
+	/**
+	 * 注册按钮的事件处理
+	 */
 	private void button_Register_ClickListener() {
 		startActivity(new Intent(this, RegisterActivity.class));
 	}
 
-	// private String getLoginName() {
-	// EditText textLoginName = (EditText)
-	// findViewById(R.id.activityloginemail);
-	// return textLoginName.getText().toString();
-	// }
-	//
-	// private String getLoginPassword() {
-	// EditText textpassword = (EditText)
-	// findViewById(R.id.activityloginpassword);
-	// return textpassword.getText().toString();
-	// }
-	//
-	// private void addListeners() {
-	//
-	// // add password input finished listener
-	// EditText passwordText = (EditText)
-	// findViewById(R.id.activityloginpassword);
-	// passwordText.setOnEditorActionListener(new OnEditorActionListener() {
-	//
-	// @Override
-	// public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-	// if (actionId == EditorInfo.IME_ACTION_DONE) {
-	// //
-	// String loginName = getLoginName();
-	// String loginPassword = getLoginPassword();
-	// if (loginName.length() > 0 && loginPassword.length() > 0) {
-	// doLogin(loginName, loginPassword);
-	// return true;
-	// }
-	// }
-	// return false;
-	// }
-	// });
-	//
-	// // add login btn listener
-	// findViewById(R.id.activityloginloginbtn).setOnClickListener(new
-	// OnClickListener() {
-	// @Override
-	// public void onClick(View v) {
-	// String loginname = getLoginName();
-	// String loginpassword = getLoginPassword();
-	// int resid = -1;
-	// if (loginname.length() <= 0) {
-	// resid = R.string.activity_login_toast_emptyusername;
-	// } else if (loginpassword.length() <= 0) {
-	// resid = R.string.activiry_login_toast_emptypassword;
-	// }
-	//
-	// if (resid != -1) {
-	// Toast.makeText(LoginActivity.this, getString(resid),
-	// Toast.LENGTH_SHORT).show();
-	// return;
-	// }
-	//
-	// // do log in
-	// doLogin(loginname, loginpassword);
-	// }
-	// });
-	//
-	// // add register btn
-	// findViewById(R.id.activityloginregisterbtn).setOnClickListener(new
-	// OnClickListener() {
-	//
-	// @Override
-	// public void onClick(View v) {
-	// Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-	//
-	// // add extra data to intent
-	// intent.putExtra("loginname", getLoginName());
-	// intent.putExtra("loginpassword", getLoginPassword());
-	//
-	// startActivity(intent);
-	// }
-	// });
-	// }
-
-	private void doLogin(String loginname, String loginpassword) {
-		Find2MerchantsWebService.getInstance().requestLogin(loginname, loginpassword, new JsonHttpResponseHandler() {
+	/**
+	 * 执行登录
+	 * 
+	 * @param logingName
+	 *            用户登录名
+	 * @param loginPswd
+	 *            用户密码
+	 */
+	private void doLogin(String logingName, String loginPswd) {
+		Find2MerchantsWebService.getInstance().requestLogin(logingName, loginPswd, new JsonHttpResponseHandler() {
 			@Override
 			public void onSuccess(int statusCode, org.json.JSONObject response) {
 				dealwithSuccessJsonResponse(response);
+				LogInfoPrint.i(true, "登录成功");
 			}
 
 			@Override
 			public void onFailure(java.lang.Throwable e, org.json.JSONObject errorResponse) {
 				dealWithFailedJsonResponse(errorResponse);
+				LogInfoPrint.w(true, "登录失败");
 			}
 		});
 	}
 
+	/**
+	 * 登录成功的事件处理
+	 * 
+	 * @param response
+	 */
 	private void dealwithSuccessJsonResponse(JSONObject response) {
 		try {
 			if (response.getBoolean("succ")) {
@@ -195,6 +141,11 @@ public class LoginActivity extends Activity {
 		}
 	}
 
+	/**
+	 * 登录失败的事件处理
+	 * 
+	 * @param response
+	 */
 	private void dealWithFailedJsonResponse(JSONObject response) {
 		Toast.makeText(this, getString(R.string.activity_login_toast_network_error), Toast.LENGTH_SHORT).show();
 	}

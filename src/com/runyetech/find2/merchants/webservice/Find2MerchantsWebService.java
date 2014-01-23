@@ -21,6 +21,7 @@ public class Find2MerchantsWebService {
 	 * @param loginPswd
 	 *            密码
 	 * @param handler
+	 *            回调接口，处理数据
 	 */
 	public void requestLogin(String loginName, String loginPswd, JsonHttpResponseHandler responseHandler) {
 		AsyncHttpClient client = new AsyncHttpClient();
@@ -28,5 +29,17 @@ public class Find2MerchantsWebService {
 		params.add("email", loginName);
 		params.add("password", loginPswd);
 		client.post(URLPathUtil.LOGIN_URLPAHT, params, responseHandler);
+	}
+
+	/**
+	 * 商户注册
+	 * 
+	 * @param params
+	 *            商户注册时的参数列表
+	 * @param responseHandler
+	 *            回调接口，处理数据
+	 */
+	public void requestRegister(RequestParams params, JsonHttpResponseHandler responseHandler) {
+
 	}
 }

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="110dp"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/merchants_Register_ComPanyName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:hint="@string/merchants_Register_companyName"
+            android:singleLine="true" >
+        </EditText>
+
+        <EditText
+            android:id="@+id/merchants_Register_FirmName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/merchants_Register_FirmName"
+            android:inputType="textEmailAddress"
+            android:singleLine="true" >
+        </EditText>
+
+        <EditText
+            android:id="@+id/merchants_Register_License_Address"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/merchants_Register_BusinessLicense_Address"
+            android:inputType="phone"
+            android:singleLine="true" >
+        </EditText>
+
+        <EditText
+            android:id="@+id/merchants_Register_Phone_BusinessDeadline"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/merchants_Register_BusinessDeadline"
+            android:inputType="phone"
+            android:singleLine="true" >
+        </EditText>
+
+        <EditText
+            android:id="@+id/merchants_Register_MarketAddress"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/merchants_Register_MarketAddress"
+            android:inputType="textPassword"
+            android:singleLine="true" >
+        </EditText>
+
+        <EditText
+            android:id="@+id/merchants_Register_LicensePic"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/merchants_Register_LicensePic"
+            android:singleLine="true" >
+        </EditText>
+
+        <Button
+            android:id="@+id/register_Submin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/merchants_Register_Submit" />
+
+        <Button
+            android:id="@+id/register_Submin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/merchants_Register_Submit" />
+    </LinearLayout>
+
+</LinearLayout>

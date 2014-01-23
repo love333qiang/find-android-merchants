@@ -5,6 +5,7 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+
     <!-- activity login -->
     <string name="activity_login_email_hint">账号</string>
     <string name="activity_login_password_hint">密码</string>
@@ -13,8 +14,35 @@
     <string name="activity_login_toast_login_error">登录失败</string>
     <string name="activity_login_toast_network_error">网络错误</string>
 
-    <!-- automatic build -->
+    <!-- Register FirstStep -->
+    <string name="merchants_Register_NickName">商户名称</string>
+    <string name="merchants_Register_Email">邮箱</string>
+    <string name="merchants_Register_Phone_First">手机/电话</string>
+    <string name="merchants_Register_Phone_Second">手机/电话(紧急联系人)</string>
+    <string name="merchants_Register_Pswd">密码</string>
+    <string name="merchants_Register_VerifyPswd">确认密码</string>
+    <string name="merchants_Register_MarketingCode">营销代码</string>
+    <string name="merchants_Register_NextStep">下一步</string>
 
+    <!-- Register  FirstStep hint -->
+    <string name="nickName_Null">商户名称不能为空</string>
+    <string name="email_Null">邮箱不能为空</string>
+    <string name="phone_First_Null">号码不能为空</string>
+    <string name="phone_Second_Null">紧急联系人号码不能为空</string>
+    <string name="pswd_Null">密码不能为空</string>
+    <string name="verifyPswd_Null">确认密码不能为空</string>
+    <string name="marketingCode_Null">营销代码不能为空</string>
+
+    <!-- Register SceondStep -->
+    <string name="merchants_Register_companyName">公司名称</string>
+    <string name="merchants_Register_FirmName">企业名称</string>
+    <string name="merchants_Register_BusinessLicense_Address">营业执照所在地</string>
+    <string name="merchants_Register_BusinessDeadline">营业期限</string>
+    <string name="merchants_Register_MarketAddress">店铺地址</string>
+    <string name="merchants_Register_LicensePic">营业执照扫描件</string>
+    <string name="merchants_Register_Submit">提交</string>
+
+    <!-- automatic build -->
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_activity_main">MainActivity</string>
 

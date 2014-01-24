@@ -1,18 +1,30 @@
 package com.runyetech.find2.merchants;
 
+import java.io.FileNotFoundException;
+
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.ContentResolver;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.runyetech.find2.merchants.util.LogInfoPrint;
 import com.runyetech.find2.merchants.webservice.Find2MerchantsWebService;
 import com.runyetech.find2_android_merchants.R;
 
@@ -26,6 +38,10 @@ public class RegisterActivity extends Activity {
 	private LinearLayout layout_Register_First;
 	/** 第二个注册页面 */
 	private LinearLayout layout_Register_Second;
+	/** 选择用户头像的按钮 */
+	private Button button_ChoiseUserAvatar;
+	/** 用户头像的ImageView */
+	private ImageView imageView_UserAvatar;
 	/** 商户名称 */
 	private EditText editText_NickName;
 	/** 邮箱 */
@@ -52,8 +68,10 @@ public class RegisterActivity extends Activity {
 	private EditText editText_Deadline;
 	/** 店铺地址 */
 	private EditText editText_MarketAddress;
+	/** 选择图片 */
+	private Button button_ChooiseLincesePic;
 	/** 营业执照副本扫描件 */
-	private EditText editText_LicensePic;
+	private ImageView imageView_LicensePic;
 	/** 提交注册按钮 */
 	private Button button_Register_Submit;
 	/** 按键事件监听代码 */
@@ -81,7 +99,12 @@ public class RegisterActivity extends Activity {
 		layout_Register_First = (LinearLayout) findViewById(R.id.layout_Register_First);
 		layout_Register_First.setVisibility(View.VISIBLE);
 
-		editText_FirstReg = new EditText[13];
+		editText_FirstReg = new EditText[12];
+
+		button_ChoiseUserAvatar = (Button) findViewById(R.id.merchants_Register_ChooiseUserAvatar);
+		button_ChoiseUserAvatar.setOnClickListener(listener);
+
+		imageView_UserAvatar = (ImageView) findViewById(R.id.merchants_Register_UserAvater);
 
 		editText_NickName = (EditText) findViewById(R.id.merchants_Register_NickName);
 		editText_Email = (EditText) findViewById(R.id.merchants_Register_Email);
@@ -106,27 +129,33 @@ public class RegisterActivity extends Activity {
 		editText_CompayName = (EditText) findViewById(R.id.merchants_Register_ComPanyName);
 		editText_FirmName = (EditText) findViewById(R.id.merchants_Register_FirmName);
 		editText_License_Address = (EditText) findViewById(R.id.merchants_Register_License_Address);
-		editText_Deadline = (EditText) findViewById(R.id.merchants_Register_Phone_BusinessDeadline);
+
+		editText_Deadline = (EditText) findViewById(R.id.merchants_Register_BusinessDeadline);
+		editText_Deadline.setOnClickListener(listener);
+
 		editText_MarketAddress = (EditText) findViewById(R.id.merchants_Register_MarketAddress);
-		editText_LicensePic = (EditText) findViewById(R.id.merchants_Register_LicensePic);
+
+		button_ChooiseLincesePic = (Button) findViewById(R.id.merchants_Register_ChooiseLicensePic);
+		button_ChooiseLincesePic.setOnClickListener(listener);
+		imageView_LicensePic = (ImageView) findViewById(R.id.merchants_Register_LicensePic);
 
 		editText_FirstReg[7] = editText_CompayName;
 		editText_FirstReg[8] = editText_FirmName;
 		editText_FirstReg[9] = editText_License_Address;
 		editText_FirstReg[10] = editText_Deadline;
 		editText_FirstReg[11] = editText_MarketAddress;
-		editText_FirstReg[12] = editText_LicensePic;
 
 		button_Register_Submit = (Button) findViewById(R.id.register_Submin);
 		button_Register_Submit.setOnClickListener(listener);
 	}
 
 	/**
-	 * 提交注册
+	 * 提交注册:如果所有的都不为空，则弹出对话框
 	 */
 	private void click_Button_Register_Submit() {
-		checkRegisterInfo(editText_FirstReg);
-		doRegister();
+		if (checkRegisterInfo(editText_FirstReg)) {
+			createDialog();
+		}
 	}
 
 	/**
@@ -136,7 +165,7 @@ public class RegisterActivity extends Activity {
 	 *            输入信息的控件
 	 */
 
-	private void checkRegisterInfo(EditText[] editText) {
+	private boolean checkRegisterInfo(EditText[] editText) {
 		params = new RequestParams();
 		for (int i = 0; i < editText.length; i++) {
 			String registerInfo = editText[i].getText().toString().trim();
@@ -144,11 +173,16 @@ public class RegisterActivity extends Activity {
 				params.add("i", registerInfo);
 			} else {
 				editText[i].setError("内容不能为空");
-				return;
+				return false;
 			}
 		}
+		params.put("", imageView_LicensePic.getDrawable());
+		return true;
 	}
 
+	/**
+	 * 注册
+	 */
 	private void doRegister() {
 		Find2MerchantsWebService.getInstance().requestRegister(params, new JsonHttpResponseHandler() {
 			public void onSuccess(int statusCode, JSONObject response) {
@@ -162,11 +196,79 @@ public class RegisterActivity extends Activity {
 		});
 	}
 
+	/**
+	 * 提交注册前的确认对话框
+	 */
+	private void createDialog() {
+		AlertDialog.Builder builder = new Builder(this);
+		builder.setTitle("提示");
+		builder.setMessage("确认信息无误后，点击确定");
+		builder.setPositiveButton("确定", new android.content.DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.dismiss();
+				doRegister();
+			}
+		});
+		builder.setNegativeButton("取消", new android.content.DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.dismiss();
+			}
+		});
+		builder.create().show();
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if (requestCode == 2 && resultCode == RESULT_OK) {
+			Uri uri = data.getData();
+			LogInfoPrint.i(true, uri.toString());
+			ContentResolver cr = this.getContentResolver();
+			try {
+				Bitmap bitmap = BitmapFactory.decodeStream(cr.openInputStream(uri));
+				imageView_LicensePic.setImageBitmap(bitmap);
+			} catch (FileNotFoundException e) {
+				Log.e("Exception", e.getMessage(), e);
+			}
+		} else if (requestCode == 1 && resultCode == RESULT_OK) {
+			Uri uri = data.getData();
+			LogInfoPrint.i(true, uri.toString());
+			ContentResolver cr = this.getContentResolver();
+			try {
+				Bitmap bitmap = BitmapFactory.decodeStream(cr.openInputStream(uri));
+				imageView_UserAvatar.setImageBitmap(bitmap);
+			} catch (FileNotFoundException e) {
+				Log.e("Exception", e.getMessage(), e);
+			}
+		}
+		super.onActivityResult(requestCode, resultCode, data);
+	}
+
+	/**
+	 * @author YangFan 按键监听
+	 * 
+	 */
 	class ClickListener implements OnClickListener {
 		public void onClick(View v) {
 			switch (v.getId()) {
 			case R.id.register_Submin:
 				click_Button_Register_Submit();
+				break;
+
+			case R.id.merchants_Register_ChooiseUserAvatar:
+				Intent intent_avatar = new Intent();
+				intent_avatar.setType("image/*");
+				intent_avatar.setAction(Intent.ACTION_GET_CONTENT);
+				startActivityForResult(intent_avatar, 1);// 第二个参数为requestCode
+				break;
+			case R.id.merchants_Register_ChooiseLicensePic:
+				Intent intent = new Intent();
+				intent.setType("image/*");
+				intent.setAction(Intent.ACTION_GET_CONTENT);
+				startActivityForResult(intent, 2);// 第二个参数为requestCode
+				break;
+			case R.id.merchants_Register_BusinessDeadline:
+				// 弹出日期选择控件
 				break;
 			}
 		}

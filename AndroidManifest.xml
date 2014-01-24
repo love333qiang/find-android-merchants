@@ -34,9 +34,10 @@
             android:label="@string/title_activity_main" >
         </activity>
         <activity
-            android:name="com.runyetech.find2.merchants.AddGoodsActivity"
+            android:name="com.runyetech.find2.merchants.GoodsCategoryActivity"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
+        <activity android:name="com.runyetech.find2.merchants.GoodsAddActivity" android:theme="@android:style/Theme.NoTitleBar"></activity>
     </application>
 
 </manifest>

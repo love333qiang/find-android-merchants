@@ -34,39 +34,90 @@ public final class R {
         public static final int ic_launcher=0x7f020003;
     }
     public static final class id {
-        public static final int action_settings=0x7f080018;
-        public static final int activity_login_button_Login=0x7f080002;
-        public static final int activity_login_button_Register=0x7f080003;
-        public static final int activity_login_editText_UserName=0x7f080000;
-        public static final int activity_login_editText_UserPswd=0x7f080001;
-        public static final int addGoods=0x7f080004;
-        public static final int imageView1=0x7f080008;
-        public static final int layout_Register_First=0x7f080006;
-        public static final int layout_Register_sceond=0x7f080007;
-        public static final int linearLayout1=0x7f080010;
-        public static final int merchants_Register_ComPanyName=0x7f080011;
-        public static final int merchants_Register_Email=0x7f08000a;
-        public static final int merchants_Register_FirmName=0x7f080012;
-        public static final int merchants_Register_LicensePic=0x7f080016;
-        public static final int merchants_Register_License_Address=0x7f080013;
-        public static final int merchants_Register_MarketAddress=0x7f080015;
-        public static final int merchants_Register_MarketingCode=0x7f08000f;
-        public static final int merchants_Register_NickName=0x7f080009;
-        public static final int merchants_Register_Phone_BusinessDeadline=0x7f080014;
-        public static final int merchants_Register_Phone_First=0x7f08000b;
-        public static final int merchants_Register_Phone_Sceond=0x7f08000c;
-        public static final int merchants_Register_Pswd=0x7f08000d;
-        public static final int merchants_Register_VerifyPswd=0x7f08000e;
-        public static final int register_Submin=0x7f080017;
-        public static final int scrollView1=0x7f080005;
+        public static final int RadioButton01=0x7f080021;
+        public static final int RadioButton02=0x7f080020;
+        public static final int RadioGroup01=0x7f08001f;
+        public static final int TextView01=0x7f08001e;
+        public static final int TextView02=0x7f080037;
+        public static final int TextView03=0x7f080039;
+        public static final int TextView04=0x7f08003b;
+        public static final int TextView05=0x7f08003d;
+        public static final int TextView06=0x7f08003f;
+        public static final int action_settings=0x7f080049;
+        public static final int activity_login_button_Login=0x7f08002e;
+        public static final int activity_login_button_Register=0x7f08002f;
+        public static final int activity_login_editText_UserName=0x7f08002c;
+        public static final int activity_login_editText_UserPswd=0x7f08002d;
+        public static final int addGoods=0x7f080030;
+        public static final int addGoods_ChoiseWords=0x7f080029;
+        public static final int addGoods_PublisherGoods=0x7f08002b;
+        public static final int addGoods_SearchGo=0x7f080027;
+        public static final int addGoods_SearchWorlds=0x7f080026;
+        public static final int button1=0x7f080018;
+        public static final int editText1=0x7f080006;
+        public static final int editText2=0x7f080008;
+        public static final int editText3=0x7f08000a;
+        public static final int editText4=0x7f08000c;
+        public static final int editText5=0x7f08000f;
+        public static final int editText6=0x7f080012;
+        public static final int editText7=0x7f080015;
+        public static final int imageView1=0x7f080019;
+        public static final int imageView2=0x7f08001a;
+        public static final int imageView3=0x7f08001b;
+        public static final int layout1=0x7f08001c;
+        public static final int layout2=0x7f08001d;
+        public static final int layout_Register_First=0x7f080031;
+        public static final int layout_Register_sceond=0x7f080032;
+        public static final int linearLayout1=0x7f080025;
+        public static final int linearlayout2=0x7f080028;
+        public static final int linearlayout3=0x7f08002a;
+        public static final int merchants_Register_BusinessDeadline=0x7f080044;
+        public static final int merchants_Register_ChooiseLicensePic=0x7f080046;
+        public static final int merchants_Register_ChooiseUserAvatar=0x7f080033;
+        public static final int merchants_Register_ComPanyName=0x7f080041;
+        public static final int merchants_Register_Email=0x7f080036;
+        public static final int merchants_Register_FirmName=0x7f080042;
+        public static final int merchants_Register_LicensePic=0x7f080047;
+        public static final int merchants_Register_License_Address=0x7f080043;
+        public static final int merchants_Register_MarketAddress=0x7f080045;
+        public static final int merchants_Register_MarketingCode=0x7f080040;
+        public static final int merchants_Register_NickName=0x7f080035;
+        public static final int merchants_Register_Phone_First=0x7f080038;
+        public static final int merchants_Register_Phone_Sceond=0x7f08003a;
+        public static final int merchants_Register_Pswd=0x7f08003c;
+        public static final int merchants_Register_UserAvater=0x7f080034;
+        public static final int merchants_Register_VerifyPswd=0x7f08003e;
+        public static final int radio0=0x7f080023;
+        public static final int radio1=0x7f080024;
+        public static final int radioGroup1=0x7f080022;
+        public static final int register_Submin=0x7f080048;
+        public static final int scrollView1=0x7f080000;
+        public static final int textView1=0x7f080001;
+        public static final int textView10=0x7f08000e;
+        public static final int textView11=0x7f080010;
+        public static final int textView12=0x7f080011;
+        public static final int textView13=0x7f080013;
+        public static final int textView14=0x7f080014;
+        public static final int textView15=0x7f080016;
+        public static final int textView16=0x7f080017;
+        public static final int textView2=0x7f080002;
+        public static final int textView3=0x7f080003;
+        public static final int textView4=0x7f080004;
+        public static final int textView5=0x7f080005;
+        public static final int textView6=0x7f080007;
+        public static final int textView7=0x7f080009;
+        public static final int textView8=0x7f08000b;
+        public static final int textView9=0x7f08000d;
     }
     public static final class layout {
-        public static final int activity_addgoods=0x7f030000;
-        public static final int activity_login=0x7f030001;
-        public static final int activity_main=0x7f030002;
-        public static final int activity_register=0x7f030003;
-        public static final int include_register_first=0x7f030004;
-        public static final int include_register_second=0x7f030005;
+        public static final int activity_goodsadd=0x7f030000;
+        public static final int activity_goodsadd2=0x7f030001;
+        public static final int activity_goodscategory=0x7f030002;
+        public static final int activity_login=0x7f030003;
+        public static final int activity_main=0x7f030004;
+        public static final int activity_register=0x7f030005;
+        public static final int include_register_first=0x7f030006;
+        public static final int include_register_second=0x7f030007;
     }
     public static final class menu {
         public static final int login=0x7f070000;
@@ -84,43 +135,44 @@ public final class R {
         public static final int activity_login_toast_login_error=0x7f050008;
         public static final int activity_login_toast_network_error=0x7f050009;
         public static final int app_name=0x7f050000;
-        public static final int email_Null=0x7f050013;
+        public static final int email_Null=0x7f050014;
         public static final int hello_world=0x7f050003;
-        public static final int marketingCode_Null=0x7f050018;
+        public static final int marketingCode_Null=0x7f050019;
         /**  商户登录成功后的主页面 
          */
-        public static final int merchants_AddGoods=0x7f050020;
-        public static final int merchants_Register_BusinessDeadline=0x7f05001c;
-        public static final int merchants_Register_BusinessLicense_Address=0x7f05001b;
-        public static final int merchants_Register_Email=0x7f05000b;
-        public static final int merchants_Register_FirmName=0x7f05001a;
-        public static final int merchants_Register_LicensePic=0x7f05001e;
-        public static final int merchants_Register_MarketAddress=0x7f05001d;
-        public static final int merchants_Register_MarketingCode=0x7f050010;
-        public static final int merchants_Register_NextStep=0x7f050011;
+        public static final int merchants_AddGoods=0x7f050021;
+        public static final int merchants_Register_BusinessDeadline=0x7f05001d;
+        public static final int merchants_Register_BusinessLicense_Address=0x7f05001c;
         /**  Register FirstStep 
          */
-        public static final int merchants_Register_NickName=0x7f05000a;
-        public static final int merchants_Register_Phone_First=0x7f05000c;
-        public static final int merchants_Register_Phone_Second=0x7f05000d;
-        public static final int merchants_Register_Pswd=0x7f05000e;
-        public static final int merchants_Register_Submit=0x7f05001f;
-        public static final int merchants_Register_VerifyPswd=0x7f05000f;
+        public static final int merchants_Register_ChoiseUserAvatar=0x7f05000a;
+        public static final int merchants_Register_Email=0x7f05000c;
+        public static final int merchants_Register_FirmName=0x7f05001b;
+        public static final int merchants_Register_LicensePic=0x7f05001f;
+        public static final int merchants_Register_MarketAddress=0x7f05001e;
+        public static final int merchants_Register_MarketingCode=0x7f050011;
+        public static final int merchants_Register_NextStep=0x7f050012;
+        public static final int merchants_Register_NickName=0x7f05000b;
+        public static final int merchants_Register_Phone_First=0x7f05000d;
+        public static final int merchants_Register_Phone_Second=0x7f05000e;
+        public static final int merchants_Register_Pswd=0x7f05000f;
+        public static final int merchants_Register_Submit=0x7f050020;
+        public static final int merchants_Register_VerifyPswd=0x7f050010;
         /**  Register SceondStep 
          */
-        public static final int merchants_Register_companyName=0x7f050019;
+        public static final int merchants_Register_companyName=0x7f05001a;
         /**  Register  FirstStep hint 
          */
-        public static final int nickName_Null=0x7f050012;
-        public static final int phone_First_Null=0x7f050014;
-        public static final int phone_Second_Null=0x7f050015;
-        public static final int pswd_Null=0x7f050016;
+        public static final int nickName_Null=0x7f050013;
+        public static final int phone_First_Null=0x7f050015;
+        public static final int phone_Second_Null=0x7f050016;
+        public static final int pswd_Null=0x7f050017;
         public static final int title_activity_login=0x7f050001;
-        public static final int title_activity_main=0x7f050022;
+        public static final int title_activity_main=0x7f050023;
         /**  automatic build 
          */
-        public static final int title_activity_register=0x7f050021;
-        public static final int verifyPswd_Null=0x7f050017;
+        public static final int title_activity_register=0x7f050022;
+        public static final int verifyPswd_Null=0x7f050018;
     }
     public static final class style {
         /** 

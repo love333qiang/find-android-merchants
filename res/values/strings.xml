@@ -15,11 +15,12 @@
     <string name="activity_login_toast_network_error">网络错误</string>
 
     <!-- Register FirstStep -->
+    <string name="merchants_Register_ChoiseUserAvatar">选择头像</string>
     <string name="merchants_Register_NickName">商户名称</string>
-    <string name="merchants_Register_Email">邮箱</string>
-    <string name="merchants_Register_Phone_First">手机/电话</string>
-    <string name="merchants_Register_Phone_Second">手机/电话(紧急联系人)</string>
-    <string name="merchants_Register_Pswd">密码</string>
+    <string name="merchants_Register_Email">您的邮箱</string>
+    <string name="merchants_Register_Phone_First">联系电话</string>
+    <string name="merchants_Register_Phone_Second">紧急电话</string>
+    <string name="merchants_Register_Pswd">输入密码</string>
     <string name="merchants_Register_VerifyPswd">确认密码</string>
     <string name="merchants_Register_MarketingCode">营销代码</string>
     <string name="merchants_Register_NextStep">下一步</string>
@@ -36,7 +37,7 @@
     <!-- Register SceondStep -->
     <string name="merchants_Register_companyName">公司名称</string>
     <string name="merchants_Register_FirmName">企业名称</string>
-    <string name="merchants_Register_BusinessLicense_Address">营业执照所在地</string>
+    <string name="merchants_Register_BusinessLicense_Address">执照所在地</string>
     <string name="merchants_Register_BusinessDeadline">营业期限</string>
     <string name="merchants_Register_MarketAddress">店铺地址</string>
     <string name="merchants_Register_LicensePic">营业执照扫描件</string>

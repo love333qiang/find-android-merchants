@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.runyetech.find2.merchants.util.LogInfoPrint;
+import com.runyetech.find2.merchants.util.LogInfoToast;
 import com.runyetech.find2.merchants.webservice.Find2MerchantsWebService;
 import com.runyetech.find2_android_merchants.R;
 
@@ -85,7 +86,7 @@ public class LoginActivity extends Activity {
 		if (userName.length() > 0 && userPswd.length() > 0) {
 			doLogin(userName, userPswd);
 		} else {
-			Toast.makeText(this, "用户名或密码不能为空！", Toast.LENGTH_LONG).show();
+			LogInfoToast.showToast(true, this, "用户名或者密码不能为空");
 		}
 	}
 

@@ -50,4 +50,22 @@
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_activity_main">MainActivity</string>
 
+    <!-- 商品分类 -->
+    <string-array name="goods_category">
+        <item>山西特产</item>
+        <item>母婴用品</item>
+        <item>酒饮冲调</item>
+        <item>进口食品</item>
+        <item>休闲食品</item>
+        <item>保健滋补</item>
+        <item>粮油调味</item>
+        <item>个护化妆</item>
+        <item>厨房用品</item>
+        <item>清洁洗涤</item>
+        <item>家居家纺</item>
+        <item>成人用品</item>
+        <item>熟食</item>
+        <item>蛋糕</item>
+    </string-array>
+
 </resources>

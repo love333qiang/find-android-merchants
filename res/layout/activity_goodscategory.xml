@@ -54,6 +54,7 @@
             android:id="@+id/addGoods_ChoiseWords"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="none"
             android:drawableRight="@android:drawable/presence_busy" />
     </LinearLayout>
 

@@ -19,7 +19,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/goods_Direction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="商品详细描述"
@@ -28,7 +28,7 @@
 
     <LinearLayout
         android:id="@+id/layout2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/layout1"
         android:orientation="vertical" >
@@ -53,20 +53,20 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioGroup
-                android:id="@+id/RadioGroup01"
+                android:id="@+id/goods_Invoice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
                 <RadioButton
-                    android:id="@+id/RadioButton02"
+                    android:id="@+id/goods_HasInvoice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
                     android:text="有" />
 
                 <RadioButton
-                    android:id="@+id/RadioButton01"
+                    android:id="@+id/goods_NoInvoice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="50dp"
@@ -87,27 +87,72 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioGroup
-                android:id="@+id/radioGroup1"
+                android:id="@+id/goods_Repair"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
                 <RadioButton
-                    android:id="@+id/radio0"
+                    android:id="@+id/goods_HasRepair"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
                     android:text="有" />
 
                 <RadioButton
-                    android:id="@+id/radio1"
+                    android:id="@+id/goods_NoRepair"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="50dp"
                     android:text="无" />
-
             </RadioGroup>
         </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout2"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="退换货承诺："
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <RadioButton
+                android:id="@+id/goods_Promise"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="凡购买本店商品，若存在质量问题或与描述不符，本店将自动提供退换货服务！"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout3"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/goods_PublisherGoods"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发布商品" />
     </LinearLayout>
 
 </RelativeLayout>

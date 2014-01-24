@@ -26,8 +26,6 @@ public class RegisterActivity extends Activity {
 	private LinearLayout layout_Register_First;
 	/** 第二个注册页面 */
 	private LinearLayout layout_Register_Second;
-	/** 注册的下一步按钮 */
-	private Button button_Register_NextStep;
 	/** 商户名称 */
 	private EditText editText_NickName;
 	/** 邮箱 */
@@ -44,7 +42,6 @@ public class RegisterActivity extends Activity {
 	private EditText editText_MarketingCode;
 	/** EditText数组，在点击下一步按钮判断值是否为空 */
 	private EditText[] editText_FirstReg;
-
 	/** 公司名称 */
 	private EditText editText_CompayName;
 	/** 企业名称 */
@@ -59,9 +56,6 @@ public class RegisterActivity extends Activity {
 	private EditText editText_LicensePic;
 	/** 提交注册按钮 */
 	private Button button_Register_Submit;
-	/** EditText数组，用于点击注册按钮时判断值是否为空 */
-	private EditText[] editText_SecondReg;
-
 	/** 按键事件监听代码 */
 	private ClickListener listener;
 
@@ -87,7 +81,7 @@ public class RegisterActivity extends Activity {
 		layout_Register_First = (LinearLayout) findViewById(R.id.layout_Register_First);
 		layout_Register_First.setVisibility(View.VISIBLE);
 
-		editText_FirstReg = new EditText[7];
+		editText_FirstReg = new EditText[13];
 
 		editText_NickName = (EditText) findViewById(R.id.merchants_Register_NickName);
 		editText_Email = (EditText) findViewById(R.id.merchants_Register_Email);
@@ -105,12 +99,9 @@ public class RegisterActivity extends Activity {
 		editText_FirstReg[5] = editText_VerifyPswd;
 		editText_FirstReg[6] = editText_MarketingCode;
 
-		button_Register_NextStep = (Button) findViewById(R.id.register_NextStep);
-		button_Register_NextStep.setOnClickListener(listener);
-
 		/** 第二个注册页面的控件的实例化 ，第二个注册页面默认不现实 */
 		layout_Register_Second = (LinearLayout) findViewById(R.id.layout_Register_sceond);
-		layout_Register_Second.setVisibility(View.GONE);
+		layout_Register_Second.setVisibility(View.VISIBLE);
 
 		editText_CompayName = (EditText) findViewById(R.id.merchants_Register_ComPanyName);
 		editText_FirmName = (EditText) findViewById(R.id.merchants_Register_FirmName);
@@ -119,33 +110,22 @@ public class RegisterActivity extends Activity {
 		editText_MarketAddress = (EditText) findViewById(R.id.merchants_Register_MarketAddress);
 		editText_LicensePic = (EditText) findViewById(R.id.merchants_Register_LicensePic);
 
-		editText_SecondReg = new EditText[6];
-		editText_SecondReg[0] = editText_CompayName;
-		editText_SecondReg[1] = editText_FirmName;
-		editText_SecondReg[2] = editText_License_Address;
-		editText_SecondReg[3] = editText_Deadline;
-		editText_SecondReg[4] = editText_MarketAddress;
-		editText_SecondReg[5] = editText_LicensePic;
+		editText_FirstReg[7] = editText_CompayName;
+		editText_FirstReg[8] = editText_FirmName;
+		editText_FirstReg[9] = editText_License_Address;
+		editText_FirstReg[10] = editText_Deadline;
+		editText_FirstReg[11] = editText_MarketAddress;
+		editText_FirstReg[12] = editText_LicensePic;
 
 		button_Register_Submit = (Button) findViewById(R.id.register_Submin);
 		button_Register_Submit.setOnClickListener(listener);
 	}
 
 	/**
-	 * 下一步，继续注册按钮的事件处理
-	 */
-	private void click_Button_Register_NextStep() {
-		params = new RequestParams();
-		checkRegisterInfo(1, editText_FirstReg);
-		layout_Register_First.setVisibility(View.GONE);
-		layout_Register_Second.setVisibility(View.VISIBLE);
-	}
-
-	/**
 	 * 提交注册
 	 */
 	private void click_Button_Register_Submit() {
-		checkRegisterInfo(2, editText_SecondReg);
+		checkRegisterInfo(editText_FirstReg);
 		doRegister();
 	}
 
@@ -156,11 +136,12 @@ public class RegisterActivity extends Activity {
 	 *            输入信息的控件
 	 */
 
-	private void checkRegisterInfo(int whichReg, EditText[] editText) {
+	private void checkRegisterInfo(EditText[] editText) {
+		params = new RequestParams();
 		for (int i = 0; i < editText.length; i++) {
 			String registerInfo = editText[i].getText().toString().trim();
 			if (registerInfo.length() > 0) {
-				params.add(whichReg + "i", registerInfo);
+				params.add("i", registerInfo);
 			} else {
 				editText[i].setError("内容不能为空");
 				return;
@@ -184,9 +165,6 @@ public class RegisterActivity extends Activity {
 	class ClickListener implements OnClickListener {
 		public void onClick(View v) {
 			switch (v.getId()) {
-			case R.id.register_NextStep:
-				click_Button_Register_NextStep();
-				break;
 			case R.id.register_Submin:
 				click_Button_Register_Submit();
 				break;

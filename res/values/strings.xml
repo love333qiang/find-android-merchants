@@ -42,6 +42,9 @@
     <string name="merchants_Register_LicensePic">营业执照扫描件</string>
     <string name="merchants_Register_Submit">提交</string>
 
+    <!-- 商户登录成功后的主页面 -->
+    <string name="merchants_AddGoods">添加商品</string>
+
     <!-- automatic build -->
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_activity_main">MainActivity</string>

@@ -40,6 +40,7 @@ public class Find2MerchantsWebService {
 	 *            回调接口，处理数据
 	 */
 	public void requestRegister(RequestParams params, JsonHttpResponseHandler responseHandler) {
-
+		AsyncHttpClient client = new AsyncHttpClient();
+		client.post("", params, responseHandler);
 	}
 }

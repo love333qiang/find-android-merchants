@@ -73,10 +73,4 @@
         android:singleLine="true" >
     </EditText>
 
-    <Button
-        android:id="@+id/register_NextStep"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/merchants_Register_NextStep" />
-
 </LinearLayout>

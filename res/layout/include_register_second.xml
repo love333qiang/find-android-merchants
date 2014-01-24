@@ -8,7 +8,6 @@
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="110dp"
         android:orientation="vertical" >
 
         <EditText
@@ -64,12 +63,6 @@
             android:hint="@string/merchants_Register_LicensePic"
             android:singleLine="true" >
         </EditText>
-
-        <Button
-            android:id="@+id/register_Submin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/merchants_Register_Submit" />
 
         <Button
             android:id="@+id/register_Submin"

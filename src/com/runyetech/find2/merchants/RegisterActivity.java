@@ -176,7 +176,11 @@ public class RegisterActivity extends Activity {
 				return false;
 			}
 		}
+		params.put("", imageView_UserAvatar.getDrawable());
 		params.put("", imageView_LicensePic.getDrawable());
+		// params.put("", LocationService.getLocation(this).getLongitude());//
+		// 经度
+		// params.put("", LocationService.getLocation(this).getLatitude());// 纬度
 		return true;
 	}
 

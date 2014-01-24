@@ -9,6 +9,9 @@
         android:targetSdkVersion="18" />
     <!-- 联网权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 获取经纬度权限 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:name="com.runyetech.find2.merchants.Find2MerchantsApplication"
@@ -37,7 +40,10 @@
             android:name="com.runyetech.find2.merchants.GoodsCategoryActivity"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
-        <activity android:name="com.runyetech.find2.merchants.GoodsAddActivity" android:theme="@android:style/Theme.NoTitleBar"></activity>
+        <activity
+            android:name="com.runyetech.find2.merchants.GoodsAddActivity"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
     </application>
 
 </manifest>

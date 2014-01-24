@@ -47,6 +47,11 @@ public class LoginActivity extends Activity {
 	 * 初始化控件
 	 */
 	private void initUI() {
+
+		// LocationInfo info = LocationService.AllGet(this);
+		// System.out.println(info.getLat());
+		// System.out.println(info.getLon());
+
 		listener = new ClickListener();
 
 		button_Login = (Button) findViewById(R.id.activity_login_button_Login);

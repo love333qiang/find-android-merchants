@@ -13,8 +13,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.runyetech.find2.merchants.util.LogInfoPrint;
-import com.runyetech.find2.merchants.util.LogInfoToast;
 import com.runyetech.find2.merchants.webservice.Find2MerchantsWebService;
 import com.runyetech.find2_android_merchants.R;
 
@@ -85,14 +85,30 @@ public class LoginActivity extends Activity {
 	 * 登录按钮的事件处理
 	 */
 	private void button_Login_ClickListener() {
+		RequestParams params = cheackLoginInfo();
+		if (params != null) {
+			doLogin(params);
+		}
+	}
+
+	private RequestParams cheackLoginInfo() {
 		String userName, userPswd;
+		RequestParams params = new RequestParams();
 		userName = editText_UserName.getText().toString().trim();
 		userPswd = editText_UserPswd.getText().toString().trim();
-		if (userName.length() > 0 && userPswd.length() > 0) {
-			doLogin(userName, userPswd);
+		if (userName.length() > 0) {
+			params.put("email", userName);
 		} else {
-			LogInfoToast.showToast(true, this, "用户名或者密码不能为空");
+			editText_UserName.setError("信息不能为空");
+			return null;
 		}
+		if (userPswd.length() > 0) {
+			params.put("password", userPswd);
+		} else {
+			editText_UserPswd.setError("信息不能为空");
+			return null;
+		}
+		return params;
 	}
 
 	/**
@@ -110,8 +126,8 @@ public class LoginActivity extends Activity {
 	 * @param loginPswd
 	 *            用户密码
 	 */
-	private void doLogin(String logingName, String loginPswd) {
-		Find2MerchantsWebService.getInstance().requestLogin(logingName, loginPswd, new JsonHttpResponseHandler() {
+	private void doLogin(RequestParams params) {
+		Find2MerchantsWebService.getInstance().requestLogin(params, new JsonHttpResponseHandler() {
 			@Override
 			public void onSuccess(int statusCode, org.json.JSONObject response) {
 				dealwithSuccessJsonResponse(response);

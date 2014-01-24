@@ -5,50 +5,64 @@
     android:background="@drawable/activity_login_bg"
     tools:context=".LoginActivity" >
 
-    <EditText
-        android:id="@+id/activity_login_editText_UserName"
-        android:layout_width="@dimen/activity_login_input_width"
-        android:layout_height="@dimen/activity_login_input_height"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/activity_login_input_email_top"
-        android:hint="@string/activity_login_email_hint"
-        android:singleLine="true"
-        android:text="l@gmail.com"
-        android:textSize="@dimen/activity_login_input_fontsize" >
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
-        <requestFocus />
-    </EditText>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-    <EditText
-        android:id="@+id/activity_login_editText_UserPswd"
-        android:layout_width="@dimen/activity_login_input_width"
-        android:layout_height="@dimen/activity_login_input_height"
-        android:layout_below="@+id/activity_login_editText_UserName"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/activity_login_input_margin"
-        android:hint="@string/activity_login_password_hint"
-        android:inputType="textPassword"
-        android:singleLine="true"
-        android:textSize="@dimen/activity_login_input_fontsize" >
-    </EditText>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/activity_login_button_Login"
-        android:layout_width="@dimen/activity_login_input_width"
-        android:layout_height="@dimen/activity_login_input_height"
-        android:layout_below="@+id/activity_login_editText_UserPswd"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/activity_login_input_margin"
-        android:background="@drawable/activity_login_loginbtn" />
+                <EditText
+                    android:id="@+id/activity_login_editText_UserName"
+                    android:layout_width="@dimen/activity_login_input_width"
+                    android:layout_height="@dimen/activity_login_input_height"
+                    android:layout_marginTop="@dimen/activity_login_input_email_top"
+                    android:ems="10"
+                    android:hint="@string/activity_login_email_hint"
+                    android:singleLine="true"
+                    android:text="l@gmail.com"
+                    android:textSize="@dimen/activity_login_input_fontsize" >
 
-    <Button
-        android:id="@+id/activity_login_button_Register"
-        android:layout_width="@dimen/activity_login_input_width"
-        android:layout_height="@dimen/activity_login_input_height"
-        android:layout_below="@+id/activity_login_button_Login"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/activity_login_input_margin"
-        android:background="@drawable/activity_login_registerbtn" />
+                    <requestFocus />
+                </EditText>
+
+                <EditText
+                    android:id="@+id/activity_login_editText_UserPswd"
+                    android:layout_width="@dimen/activity_login_input_width"
+                    android:layout_height="@dimen/activity_login_input_height"
+                    android:layout_marginTop="@dimen/activity_login_input_margin"
+                    android:ems="10"
+                    android:hint="@string/activity_login_password_hint"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:textSize="@dimen/activity_login_input_fontsize" />
+
+                <Button
+                    android:id="@+id/activity_login_button_Login"
+                    android:layout_width="@dimen/activity_login_input_width"
+                    android:layout_height="@dimen/activity_login_input_height"
+                    android:layout_marginTop="@dimen/activity_login_input_margin"
+                    android:background="@drawable/activity_login_loginbtn" />
+
+                <Button
+                    android:id="@+id/activity_login_button_Register"
+                    android:layout_width="@dimen/activity_login_input_width"
+                    android:layout_height="@dimen/activity_login_input_height"
+                    android:layout_marginTop="@dimen/activity_login_input_margin"
+                    android:background="@drawable/activity_login_registerbtn" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

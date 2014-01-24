@@ -23,11 +23,8 @@ public class Find2MerchantsWebService {
 	 * @param handler
 	 *            回调接口，处理数据
 	 */
-	public void requestLogin(String loginName, String loginPswd, JsonHttpResponseHandler responseHandler) {
+	public void requestLogin(RequestParams params, JsonHttpResponseHandler responseHandler) {
 		AsyncHttpClient client = new AsyncHttpClient();
-		RequestParams params = new RequestParams();
-		params.add("email", loginName);
-		params.add("password", loginPswd);
 		client.post(URLPathUtil.LOGIN_URLPAHT, params, responseHandler);
 	}
 

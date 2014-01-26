@@ -1,6 +1,11 @@
 package com.runyetech.find2.merchants;
 
+import java.util.Calendar;
+
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.DatePickerDialog.OnDateSetListener;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -9,6 +14,7 @@ import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
@@ -28,7 +34,6 @@ public class GoodsAddActivity extends Activity {
 	 * 5：原价；6：净含量；7：现有数量；8：描述
 	 * */
 	private EditText[] editText_GoodsInfo;
-
 	/** 商品的展示图片的数组 */
 	private ImageView[] imageView_goodsPic;
 	/** 选择商品图片的按钮数组 */
@@ -41,6 +46,8 @@ public class GoodsAddActivity extends Activity {
 	private CheckBox checkBox_goodsPromise;
 	/** 发布商品 */
 	private Button button_goodsPubliser;
+	/** 选择商品的生产时间 */
+	private Button button_goodsProduceData;
 	/** 是否有发票 */
 	private Boolean isHasInvoice;
 	/** 是否保修 */
@@ -57,6 +64,10 @@ public class GoodsAddActivity extends Activity {
 	private LongClickListener longListener;
 	/** 选取状态变更的事件监听类 */
 	private CheckedChangeListener checkedChangeListener;
+	/** 保存日期选择控件的年月日值 */
+	private int mYear, mMonth, mDay;
+	/** 声明一个独一无二的标识，来作为要显示DatePicker的Dialog的ID： */
+	private static final int DATE_DIALOG_ID = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +107,9 @@ public class GoodsAddActivity extends Activity {
 		imageView_goodsPic[1].setOnLongClickListener(longListener);
 		imageView_goodsPic[2].setOnLongClickListener(longListener);
 
+		button_goodsProduceData = (Button) findViewById(R.id.button_goodsProduceData);
+		button_goodsProduceData.setOnClickListener(listener);
+
 		button_goodsChoiseGoodsPic = new Button[3];
 		button_goodsChoiseGoodsPic[0] = (Button) findViewById(R.id.goods_ChoiseGoodsPic_0);
 		button_goodsChoiseGoodsPic[0].setOnClickListener(listener);
@@ -114,6 +128,15 @@ public class GoodsAddActivity extends Activity {
 		radioGroup_goodsRepair.setOnCheckedChangeListener(checkedChangeListener);
 
 		checkBox_goodsPromise = (CheckBox) findViewById(R.id.goods_Promise);
+
+		// 获得当前的日期：
+		final Calendar currentDate = Calendar.getInstance();
+		mYear = currentDate.get(Calendar.YEAR);
+		mMonth = currentDate.get(Calendar.MONTH);
+		mDay = currentDate.get(Calendar.DAY_OF_MONTH);
+		StringBuilder sb = new StringBuilder();
+		sb.append(mYear).append("年").append(mMonth + 1).append("月").append(mDay).append("日");
+		editText_GoodsInfo[2].setText(sb.toString());
 	}
 
 	/**
@@ -161,8 +184,8 @@ public class GoodsAddActivity extends Activity {
 	private boolean checkGoodsInfo(ImageView[] imageView) {
 		// 如果是默认的图片，就不去上传
 		for (int i = 0; i < imageView.length; i++) {
-			if (imageView[i].getContentDescription().equals(
-					getResources().getString(R.string.goods_pic_defaultdescription))) {
+			String temp_description = getResources().getString(R.string.goods_pic_defaultdescription);
+			if (imageView[i].getContentDescription().equals(temp_description)) {
 			} else {
 				params.put("" + i, "");
 			}
@@ -170,13 +193,11 @@ public class GoodsAddActivity extends Activity {
 		return false;
 	}
 
-	/**
-	 * 图片选取方式的对话框
-	 */
+	/** 图片选取方式的对话框 */
 	private void createDialog() {
 		String title = getResources().getString(R.string.goods_choiseMsg);
 		String[] type = getResources().getStringArray(R.array.goods_choisePicType);
-		MyDailog.cretaeItemDialog(GoodsAddActivity.this, title, type);
+		MyDailog.cretaeChoisePicItemDialog(GoodsAddActivity.this, title, type);
 	}
 
 	@Override
@@ -204,6 +225,11 @@ public class GoodsAddActivity extends Activity {
 	class ClickListener implements OnClickListener {
 		public void onClick(View v) {
 			switch (v.getId()) {
+			case R.id.button_goodsProduceData:
+				// 调用Activity类的方法来显示Dialog:调用这个方法会允许Activity管理该Dialog的生命周期，
+				// 并会调用 onCreateDialog(int)回调函数来请求一个Dialog
+				showDialog(DATE_DIALOG_ID);
+				break;
 			case R.id.goods_ChoiseGoodsPic_0:
 				createDialog();
 				whichPic = 0;
@@ -273,4 +299,25 @@ public class GoodsAddActivity extends Activity {
 		}
 	}
 
+	/** 需要定义弹出的DatePicker对话框的事件监听器 */
+	private DatePickerDialog.OnDateSetListener mDateSetListener = new OnDateSetListener() {
+		public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+			mYear = year;
+			mMonth = monthOfYear;
+			mDay = dayOfMonth;
+			StringBuilder sb = new StringBuilder();
+			sb.append(mYear).append("年").append(mMonth + 1).append("月").append(mDay).append("日");
+			editText_GoodsInfo[2].setText(sb.toString());
+		}
+	};
+
+	/** 当Activity调用showDialog函数时会触发该函数的调用 */
+	@Override
+	protected Dialog onCreateDialog(int id) {
+		switch (id) {
+		case DATE_DIALOG_ID:
+			return new DatePickerDialog(this, mDateSetListener, mYear, mMonth, mDay);
+		}
+		return null;
+	}
 }

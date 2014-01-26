@@ -55,6 +55,12 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
+                    android:background="@drawable/list_line"
+                    android:layout_height="wrap_content" >
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     >
 

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/activity_login_bg" >
+    android:layout_height="match_parent" >
 
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:background="@drawable/activity_login_bg" >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical" >
 
             <LinearLayout
@@ -69,8 +69,6 @@
                         android:layout_height="wrap_content"
                         android:drawableRight="@android:drawable/presence_busy"
                         android:ems="10" >
-
-                        <requestFocus />
                     </EditText>
                 </LinearLayout>
 
@@ -107,8 +105,7 @@
                     <EditText
                         android:id="@+id/goods_Name"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                         />
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -221,7 +218,8 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -234,36 +232,72 @@
                             android:layout_height="wrap_content"
                             android:text="商品图片 ："
                             android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                        <Button
-                            android:id="@+id/goods_ChoiseGoodsPic"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="点击上传" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center" >
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="vertical" >
 
-                        <ImageView
-                            android:id="@+id/goods_pic_1"
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_launcher" />
+                            android:gravity="center|left"
+                            android:orientation="horizontal" >
 
-                        <ImageView
-                            android:id="@+id/goods_pic_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_launcher" />
+                            <Button
+                                android:id="@+id/goods_ChoiseGoodsPic_0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="点击上传" />
 
-                        <ImageView
-                            android:id="@+id/goods_pic_3"
+                            <ImageView
+                                android:id="@+id/goods_pic_0"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:contentDescription="@string/goods_pic_defaultdescription"
+                                android:src="@drawable/ic_launcher" />
+                        </LinearLayout>
+
+                        <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_launcher" />
+                            android:layout_height="match_parent" >
+
+                            <Button
+                                android:id="@+id/goods_ChoiseGoodsPic_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="点击上传" />
+
+                            <ImageView
+                                android:id="@+id/goods_pic_1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:contentDescription="@string/goods_pic_defaultdescription"
+                                android:src="@drawable/ic_launcher" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="horizontal" >
+
+                            <Button
+                                android:id="@+id/goods_ChoiseGoodsPic_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="点击上传" />
+
+                            <ImageView
+                                android:id="@+id/goods_pic_2"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:contentDescription="@string/goods_pic_defaultdescription"
+                                android:src="@drawable/ic_launcher" />
+                        </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
 

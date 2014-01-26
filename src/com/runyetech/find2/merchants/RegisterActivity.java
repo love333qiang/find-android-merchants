@@ -1,20 +1,13 @@
 package com.runyetech.find2.merchants;
 
-import java.io.FileNotFoundException;
-
 import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
-import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -24,7 +17,7 @@ import android.widget.LinearLayout;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-import com.runyetech.find2.merchants.util.LogInfoPrint;
+import com.runyetech.find2.merchants.util.PhotosUtil;
 import com.runyetech.find2.merchants.webservice.Find2MerchantsWebService;
 import com.runyetech.find2_android_merchants.R;
 
@@ -224,28 +217,11 @@ public class RegisterActivity extends Activity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-		if (requestCode == 2 && resultCode == RESULT_OK) {
-			Uri uri = data.getData();
-			LogInfoPrint.i(true, uri.toString());
-			ContentResolver cr = this.getContentResolver();
-			try {
-				Bitmap bitmap = BitmapFactory.decodeStream(cr.openInputStream(uri));
-				imageView_LicensePic.setImageBitmap(bitmap);
-			} catch (FileNotFoundException e) {
-				Log.e("Exception", e.getMessage(), e);
-			}
-		} else if (requestCode == 1 && resultCode == RESULT_OK) {
-			Uri uri = data.getData();
-			LogInfoPrint.i(true, uri.toString());
-			ContentResolver cr = this.getContentResolver();
-			try {
-				Bitmap bitmap = BitmapFactory.decodeStream(cr.openInputStream(uri));
-				imageView_UserAvatar.setImageBitmap(bitmap);
-			} catch (FileNotFoundException e) {
-				Log.e("Exception", e.getMessage(), e);
-			}
+		if (requestCode == 2) {
+			imageView_LicensePic.setImageBitmap(PhotosUtil.onActivityResultAlbum(requestCode, resultCode, data, this));
+		} else if (requestCode == 1) {
+			imageView_UserAvatar.setImageBitmap(PhotosUtil.onActivityResultAlbum(requestCode, resultCode, data, this));
 		}
-		super.onActivityResult(requestCode, resultCode, data);
 	}
 
 	/**
@@ -259,16 +235,10 @@ public class RegisterActivity extends Activity {
 				click_Button_Register_Submit();
 				break;
 			case R.id.merchants_Register_ChooiseUserAvatar:
-				Intent intent_avatar = new Intent();
-				intent_avatar.setType("image/*");
-				intent_avatar.setAction(Intent.ACTION_GET_CONTENT);
-				startActivityForResult(intent_avatar, 1);// 第二个参数为requestCode
+				PhotosUtil.album(RegisterActivity.this, 1);
 				break;
 			case R.id.merchants_Register_ChooiseLicensePic:
-				Intent intent = new Intent();
-				intent.setType("image/*");
-				intent.setAction(Intent.ACTION_GET_CONTENT);
-				startActivityForResult(intent, 2);// 第二个参数为requestCode
+				PhotosUtil.album(RegisterActivity.this, 2);
 				break;
 			case R.id.merchants_Register_BusinessDeadline:
 				// 弹出日期选择控件

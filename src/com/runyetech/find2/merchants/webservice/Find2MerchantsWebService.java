@@ -40,4 +40,17 @@ public class Find2MerchantsWebService {
 		AsyncHttpClient client = new AsyncHttpClient();
 		client.post("", params, responseHandler);
 	}
+
+	/**
+	 * 添加商品
+	 * 
+	 * @param params
+	 *            商品所有参数的参数列表
+	 * @param responseHandler
+	 *            回调接口，处理数据
+	 */
+	public void requestPublisherGoods(RequestParams params, JsonHttpResponseHandler responseHandler) {
+		AsyncHttpClient client = new AsyncHttpClient();
+		client.post("", params, responseHandler);
+	}
 }

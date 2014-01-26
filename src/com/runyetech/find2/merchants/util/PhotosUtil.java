@@ -36,8 +36,8 @@ public class PhotosUtil {
 	 *            Activity的对象
 	 */
 	public static void album(Activity instance, int resultCode) {
-		Intent picture = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-		instance.startActivityForResult(picture, resultCode);
+		Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+		instance.startActivityForResult(intent, resultCode);
 	}
 
 	public static Bitmap onActivityResultAlbum(int requestCode, int resultCode, Intent data, Activity instance) {

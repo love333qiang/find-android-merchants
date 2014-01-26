@@ -7,8 +7,8 @@
     <string name="hello_world">Hello world!</string>
 
     <!-- activity login -->
-    <string name="activity_login_email_hint">账号</string>
-    <string name="activity_login_password_hint">密码</string>
+    <string name="activity_login_email">账 号 : </string>
+    <string name="activity_login_password">密 码 : </string>
     <string name="activity_login_toast_emptyusername">输入的用户名不能为空！</string>
     <string name="activiry_login_toast_emptypassword">输入的密码不能为空！</string>
     <string name="activity_login_toast_login_error">登录失败</string>

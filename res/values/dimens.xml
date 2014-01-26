@@ -5,9 +5,8 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     
 	<!-- activity login -->
-    <dimen name="activity_login_input_width">150dp</dimen>
-    <dimen name="activity_login_input_height">30dp</dimen>
-    <dimen name="activity_login_input_margin">20dip</dimen>
+    <dimen name="activity_login_input_width">190dp</dimen>
+    <dimen name="activity_login_input_height">38dp</dimen>
     <dimen name="activity_login_input_fontsize">15sp</dimen>
 
 </resources>

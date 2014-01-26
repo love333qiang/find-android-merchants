@@ -23,6 +23,7 @@ import android.widget.ImageView;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.runyetech.find2.merchants.util.BitmapUitl;
 import com.runyetech.find2.merchants.util.MyDailog;
 import com.runyetech.find2.merchants.util.PhotosUtil;
 import com.runyetech.find2.merchants.webservice.Find2MerchantsWebService;
@@ -184,6 +185,7 @@ public class RegisterActivity extends Activity {
 		super.onActivityResult(requestCode, resultCode, data);
 		if (requestCode == 0) {
 			Bitmap bmp = PhotosUtil.onActivityResultAlbum(requestCode, resultCode, data, this);
+			bmp = BitmapUitl.Bmp2RoundCorner(bmp, 10);
 			imageView_Register[whichPic].setImageBitmap(bmp);
 		} else if (requestCode == 1) {
 			Bitmap bmp = PhotosUtil.onActivityResultCamera(requestCode, resultCode, data, this);

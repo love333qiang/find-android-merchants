@@ -26,9 +26,8 @@ public final class R {
     
          */
         public static final int activity_horizontal_margin=0x7f040000;
-        public static final int activity_login_input_fontsize=0x7f040005;
+        public static final int activity_login_input_fontsize=0x7f040004;
         public static final int activity_login_input_height=0x7f040003;
-        public static final int activity_login_input_margin=0x7f040004;
         /**  activity login 
          */
         public static final int activity_login_input_width=0x7f040002;
@@ -149,8 +148,8 @@ public final class R {
         public static final int activiry_login_toast_emptypassword=0x7f050007;
         /**  activity login 
          */
-        public static final int activity_login_email_hint=0x7f050004;
-        public static final int activity_login_password_hint=0x7f050005;
+        public static final int activity_login_email=0x7f050004;
+        public static final int activity_login_password=0x7f050005;
         public static final int activity_login_toast_emptyusername=0x7f050006;
         public static final int activity_login_toast_login_error=0x7f050008;
         public static final int activity_login_toast_network_error=0x7f050009;

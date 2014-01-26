@@ -234,7 +234,7 @@ public class BitmapUitl {
 	 *            圆角的弧度
 	 * @return 圆角图片
 	 */
-	public Bitmap Bmp2RoundCorner(Bitmap bitmap, int pixels) {
+	public static Bitmap Bmp2RoundCorner(Bitmap bitmap, int pixels) {
 		Bitmap roundCornerBitmap = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Config.ARGB_8888);
 		Canvas canvas = new Canvas(roundCornerBitmap);
 		int color = 0xff424242;

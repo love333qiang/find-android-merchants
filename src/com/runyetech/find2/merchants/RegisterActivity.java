@@ -258,7 +258,6 @@ public class RegisterActivity extends Activity {
 			case R.id.register_Submin:
 				click_Button_Register_Submit();
 				break;
-
 			case R.id.merchants_Register_ChooiseUserAvatar:
 				Intent intent_avatar = new Intent();
 				intent_avatar.setType("image/*");

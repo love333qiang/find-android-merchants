@@ -23,8 +23,7 @@ public final class R {
     
          */
         public static final int activity_horizontal_margin=0x7f040000;
-        public static final int activity_login_input_email_top=0x7f040005;
-        public static final int activity_login_input_fontsize=0x7f040006;
+        public static final int activity_login_input_fontsize=0x7f040005;
         public static final int activity_login_input_height=0x7f040003;
         public static final int activity_login_input_margin=0x7f040004;
         /**  activity login 
@@ -37,6 +36,8 @@ public final class R {
         public static final int activity_login_loginbtn=0x7f020001;
         public static final int activity_login_registerbtn=0x7f020002;
         public static final int ic_launcher=0x7f020003;
+        public static final int list_div1=0x7f020004;
+        public static final int shape=0x7f020005;
     }
     public static final class id {
         public static final int TextView01=0x7f09001f;

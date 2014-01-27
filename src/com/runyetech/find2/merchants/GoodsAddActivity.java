@@ -265,10 +265,10 @@ public class GoodsAddActivity extends Activity {
 				showDialog(DATE_DIALOG_ID);
 				break;
 			case R.id.goods_category:
-				createPopup(v, items_goods_category);
+				createPopup((TextView) v, items_goods_category);
 				break;
 			case R.id.goods_ParkType:
-				createPopup(v, items_goods_parkType);
+				createPopup((TextView) v, items_goods_parkType);
 				break;
 			case R.id.goods_ChoiseGoodsPic_0:
 				createDialog();
@@ -367,22 +367,21 @@ public class GoodsAddActivity extends Activity {
 	 * @param parent
 	 *            父控件
 	 */
-	private void createPopup(View parent, String[] items) {
+	private void createPopup(TextView tv, String[] items) {
 		LayoutInflater lay = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View v = lay.inflate(R.layout.listview_popup_goodscategory, null);
 
 		ListView listView_Catgegory = (ListView) v.findViewById(R.id.lv_goods_category);
-		// listView_Catgegory.setAdapter(new ArrayAdapter<String>(this,
-		// android.R.layout.simple_list_item_1, items));
+
 		listView_Catgegory.setAdapter(new MyBaseAdapter(items));
-		listView_Catgegory.setOnItemClickListener(new ItemClickListener(items));
+		listView_Catgegory.setOnItemClickListener(new ItemClickListener(tv, items));
 
 		window = new PopupWindow(v, textView_goods_Category.getWidth(), 350);
 		window.setFocusable(true);
 		window.setBackgroundDrawable(new BitmapDrawable());
 		window.setOutsideTouchable(true);
 		window.update();
-		showPop(parent);
+		showPop(tv);
 	}
 
 	/**
@@ -406,15 +405,17 @@ public class GoodsAddActivity extends Activity {
 	 */
 	class ItemClickListener implements OnItemClickListener {
 		String[] items;
+		TextView tv;
 
-		public ItemClickListener(String[] items) {
+		public ItemClickListener(TextView tv, String[] items) {
 			// TODO Auto-generated constructor stub
 			this.items = items;
+			this.tv = tv;
 		}
 
 		@Override
 		public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
-			textView_goods_Category.setText(items[position]);
+			tv.setText(items[position]);
 		}
 	}
 

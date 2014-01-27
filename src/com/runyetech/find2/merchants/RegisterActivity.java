@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -38,9 +39,11 @@ public class RegisterActivity extends Activity {
 	 * 
 	 * 0:商户昵称；1：邮箱；2：手机号码；3：紧急联系人号码；4：密码；5：确认密码；6：营销代码
 	 * 
-	 * 7：公司名称；8:企业名称；9：营业执照所在地；10：营业截止日期；11：店铺地址
+	 * 7：公司名称；8:企业名称；9：营业执照所在地；10：店铺地址
 	 * */
 	private EditText[] editText_Register;
+	/** 营业期限 */
+	private TextView tv_Deadline;
 	/** 图像数组 0：商户头像；1：营业执照扫描件 */
 	private ImageView[] imageView_Register;
 	/** 选择商户头像的按钮 */
@@ -70,10 +73,18 @@ public class RegisterActivity extends Activity {
 
 	/** 实例化界面组件 */
 	private void initUI() {
+
 		listener = new ClickListener();
 
-		editText_Register = new EditText[12];
+		// Location l = LocationService.getMyLocation(this);
+		// LogInfoToast.showToast(true, this, l.getLatitude() + "");
+		// LogInfoToast.showToast(true, this, l.getLongitude() + "");
+
+		editText_Register = new EditText[11];
 		imageView_Register = new ImageView[2];
+
+		tv_Deadline = (TextView) findViewById(R.id.merchants_Register_BusinessDeadline);
+		tv_Deadline.setOnClickListener(listener);
 
 		editText_Register[0] = (EditText) findViewById(R.id.merchants_Register_NickName);
 		editText_Register[1] = (EditText) findViewById(R.id.merchants_Register_Email);
@@ -85,8 +96,7 @@ public class RegisterActivity extends Activity {
 		editText_Register[7] = (EditText) findViewById(R.id.merchants_Register_ComPanyName);
 		editText_Register[8] = (EditText) findViewById(R.id.merchants_Register_FirmName);
 		editText_Register[9] = (EditText) findViewById(R.id.merchants_Register_License_Address);
-		editText_Register[10] = (EditText) findViewById(R.id.merchants_Register_BusinessDeadline);
-		editText_Register[11] = (EditText) findViewById(R.id.merchants_Register_MarketAddress);
+		editText_Register[10] = (EditText) findViewById(R.id.merchants_Register_MarketAddress);
 
 		imageView_Register[0] = (ImageView) findViewById(R.id.merchants_Register_UserAvater);
 		imageView_Register[1] = (ImageView) findViewById(R.id.merchants_Register_LicensePic);
@@ -118,7 +128,7 @@ public class RegisterActivity extends Activity {
 		mDay = currentDate.get(Calendar.DAY_OF_MONTH);
 		StringBuilder sb = new StringBuilder();
 		sb.append(mYear).append("年").append(mMonth + 1).append("月").append(mDay).append("日");
-		editText_Register[10].setText(sb.toString());// 设置日期
+		tv_Deadline.setText(sb.toString());// 设置日期
 	}
 
 	/**
@@ -140,9 +150,8 @@ public class RegisterActivity extends Activity {
 		}
 		params.put("", imageView_Register[0].getDrawable());
 		params.put("", imageView_Register[1].getDrawable());
-		// params.put("", LocationService.getLocation(this).getLongitude());//
-		// 经度
-		// params.put("", LocationService.getLocation(this).getLatitude());// 纬度
+		// params.put("", bdlocation.getLatitude());// weidu
+		// params.put("", bdlocation.getLongitude());// jingdu
 		return true;
 	}
 
@@ -232,7 +241,7 @@ public class RegisterActivity extends Activity {
 			mDay = dayOfMonth;
 			StringBuilder sb = new StringBuilder();
 			sb.append(mYear).append("年").append(mMonth + 1).append("月").append(mDay).append("日");
-			editText_Register[10].setText(new StringBuilder());// 设置文本的内容：
+			tv_Deadline.setText(sb.toString());// 设置文本的内容：
 		}
 	};
 

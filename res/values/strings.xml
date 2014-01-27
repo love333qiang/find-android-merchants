@@ -37,7 +37,7 @@
     <!-- Register SceondStep -->
     <string name="merchants_Register_companyName">公司名称</string>
     <string name="merchants_Register_FirmName">企业名称</string>
-    <string name="merchants_Register_BusinessLicense_Address">执照所在地</string>
+    <string name="merchants_Register_BusinessLicense_Address">执照驻地</string>
     <string name="merchants_Register_BusinessDeadline">营业期限</string>
     <string name="merchants_Register_MarketAddress">店铺地址</string>
     <string name="merchants_Register_LicensePic">营业执照扫描件</string>

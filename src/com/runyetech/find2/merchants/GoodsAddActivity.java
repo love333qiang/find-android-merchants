@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.TextView;
 
 import com.loopj.android.http.RequestParams;
 import com.runyetech.find2.merchants.util.MyDailog;
@@ -29,11 +30,15 @@ public class GoodsAddActivity extends Activity {
 	/**
 	 * 输入商品信息的EditText数组
 	 * 
-	 * 0:商品的品牌 1：包装方式 ；2：生产日期； 3：名称；；4：一口价
+	 * 0:商品的品牌 ;1：名称；；2：一口价
 	 * 
-	 * 5：原价；6：净含量；7：现有数量；8：描述
+	 * 3：原价；4：净含量；5：现有数量；6：描述
 	 * */
 	private EditText[] editText_GoodsInfo;
+	/** 商品包装方式 */
+	private TextView textView_goods_ParkType;
+	/** 商品生产日期 */
+	private TextView textView_goods_ProduceData;
 	/** 商品的展示图片的数组 */
 	private ImageView[] imageView_goodsPic;
 	/** 选择商品图片的按钮数组 */
@@ -72,7 +77,7 @@ public class GoodsAddActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_goodsadd);
+		setContentView(R.layout.activity_goodsaddtest);
 
 		initUI();
 	}
@@ -87,16 +92,20 @@ public class GoodsAddActivity extends Activity {
 		longListener = new LongClickListener();
 		checkedChangeListener = new CheckedChangeListener();
 
+		textView_goods_ParkType = (TextView) findViewById(R.id.goods_ParkType);
+		textView_goods_ParkType.setOnClickListener(listener);
+
+		textView_goods_ProduceData = (TextView) findViewById(R.id.goods_ProduceData);
+		textView_goods_ProduceData.setOnClickListener(listener);
+
 		editText_GoodsInfo = new EditText[9];
 		editText_GoodsInfo[0] = (EditText) findViewById(R.id.goods_Brand);
-		editText_GoodsInfo[1] = (EditText) findViewById(R.id.goods_ParkType);
-		editText_GoodsInfo[2] = (EditText) findViewById(R.id.goods_ProduceData);
-		editText_GoodsInfo[3] = (EditText) findViewById(R.id.goods_Name);
-		editText_GoodsInfo[4] = (EditText) findViewById(R.id.goods_FixedPrice);
-		editText_GoodsInfo[5] = (EditText) findViewById(R.id.goods_OriginalPrice);
-		editText_GoodsInfo[6] = (EditText) findViewById(R.id.goods_NetWeight);
-		editText_GoodsInfo[7] = (EditText) findViewById(R.id.goods_Counts);
-		editText_GoodsInfo[8] = (EditText) findViewById(R.id.goods_Direction);
+		editText_GoodsInfo[1] = (EditText) findViewById(R.id.goods_Name);
+		editText_GoodsInfo[2] = (EditText) findViewById(R.id.goods_FixedPrice);
+		editText_GoodsInfo[3] = (EditText) findViewById(R.id.goods_OriginalPrice);
+		editText_GoodsInfo[4] = (EditText) findViewById(R.id.goods_NetWeight);
+		editText_GoodsInfo[5] = (EditText) findViewById(R.id.goods_Counts);
+		editText_GoodsInfo[6] = (EditText) findViewById(R.id.goods_Direction);
 
 		imageView_goodsPic = new ImageView[3];
 		imageView_goodsPic[0] = (ImageView) findViewById(R.id.goods_pic_0);
@@ -136,7 +145,7 @@ public class GoodsAddActivity extends Activity {
 		mDay = currentDate.get(Calendar.DAY_OF_MONTH);
 		StringBuilder sb = new StringBuilder();
 		sb.append(mYear).append("年").append(mMonth + 1).append("月").append(mDay).append("日");
-		editText_GoodsInfo[2].setText(sb.toString());
+		textView_goods_ProduceData.setText(sb.toString());
 	}
 
 	/**
@@ -230,6 +239,9 @@ public class GoodsAddActivity extends Activity {
 				// 并会调用 onCreateDialog(int)回调函数来请求一个Dialog
 				showDialog(DATE_DIALOG_ID);
 				break;
+			case R.id.goods_ProduceData:
+				showDialog(DATE_DIALOG_ID);
+				break;
 			case R.id.goods_ChoiseGoodsPic_0:
 				createDialog();
 				whichPic = 0;
@@ -307,7 +319,7 @@ public class GoodsAddActivity extends Activity {
 			mDay = dayOfMonth;
 			StringBuilder sb = new StringBuilder();
 			sb.append(mYear).append("年").append(mMonth + 1).append("月").append(mDay).append("日");
-			editText_GoodsInfo[2].setText(sb.toString());
+			textView_goods_ProduceData.setText(sb.toString());
 		}
 	};
 

@@ -8,11 +8,16 @@
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/shape"
         android:orientation="vertical" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
             android:layout_weight="1" >
 
             <TextView
@@ -20,20 +25,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/merchants_Register_companyName"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#FF000000" />
 
             <EditText
                 android:id="@+id/merchants_Register_ComPanyName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:background="#FFF5EE"
                 android:ems="10"
+                android:gravity="center_vertical"
                 android:hint="@string/merchants_Register_companyName"
-                android:singleLine="true" />
+                android:paddingLeft="10dp"
+                android:singleLine="true"
+                android:textColor="#FF000000" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
             android:layout_weight="1" >
 
             <TextView
@@ -41,20 +55,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/merchants_Register_FirmName"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#FF000000" />
 
             <EditText
                 android:id="@+id/merchants_Register_FirmName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:background="#FFF5EE"
                 android:ems="10"
+                android:gravity="center_vertical"
                 android:hint="@string/merchants_Register_FirmName"
-                android:singleLine="true" />
+                android:paddingLeft="10dp"
+                android:singleLine="true"
+                android:textColor="#FF000000" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
             android:layout_weight="1" >
 
             <TextView
@@ -62,20 +85,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/merchants_Register_BusinessLicense_Address"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#FF000000" />
 
             <EditText
                 android:id="@+id/merchants_Register_License_Address"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:background="#FFF5EE"
                 android:ems="10"
+                android:gravity="center_vertical"
                 android:hint="@string/merchants_Register_BusinessLicense_Address"
-                android:singleLine="true" />
+                android:paddingLeft="10dp"
+                android:singleLine="true"
+                android:textColor="#FF000000" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
             android:layout_weight="1" >
 
             <TextView
@@ -83,21 +115,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/merchants_Register_BusinessDeadline"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#FF000000" />
 
             <EditText
                 android:id="@+id/merchants_Register_BusinessDeadline"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:background="#FFF5EE"
                 android:ems="10"
+                android:gravity="center_vertical"
                 android:hint="@string/merchants_Register_BusinessDeadline"
                 android:inputType="phone"
-                android:singleLine="true" />
+                android:paddingLeft="10dp"
+                android:singleLine="true"
+                android:textColor="#FF000000" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
             android:layout_weight="1" >
 
             <TextView
@@ -105,41 +146,82 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/merchants_Register_MarketAddress"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#FF000000" />
 
             <EditText
                 android:id="@+id/merchants_Register_MarketAddress"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:background="#FFF5EE"
                 android:ems="10"
+                android:gravity="center_vertical"
                 android:hint="@string/merchants_Register_MarketAddress"
-                android:singleLine="true" >
+                android:paddingLeft="10dp"
+                android:singleLine="true"
+                android:textColor="#FF000000" >
             </EditText>
         </LinearLayout>
+    </LinearLayout>
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/shape"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
+            android:text="营业执照扫描附件"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#FF000000" />
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-
-            <Button
-                android:id="@+id/merchants_Register_ChooiseLicensePic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="@string/merchants_Register_LicensePic"
-                android:singleLine="true" >
-            </Button>
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
             <ImageView
                 android:id="@+id/merchants_Register_LicensePic"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_launcher" />
-        </LinearLayout>
+                android:layout_height="170dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/activity_login_bg" />
+
+            <Button
+                android:id="@+id/merchants_Register_ChooiseLicensePic"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/merchants_Register_LicensePic"
+                android:layout_alignRight="@id/merchants_Register_LicensePic"
+                android:background="#40000000"
+                android:hint="@string/merchants_Register_LicensePic"
+                android:singleLine="true" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/shape" >
 
         <Button
             android:id="@+id/register_Submin"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@null"
             android:text="@string/merchants_Register_Submit" />
     </LinearLayout>
 

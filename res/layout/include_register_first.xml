@@ -2,180 +2,217 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical" >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:layout_marginLeft="5dip"
+        android:layout_marginRight="5dip"
+        android:background="@drawable/shape"
+        android:orientation="vertical" >
 
-        <Button
-            android:id="@+id/merchants_Register_ChooiseUserAvatar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="@string/merchants_Register_ChoiseUserAvatar"
-            android:singleLine="true" >
-        </Button>
-
-        <ImageView
-            android:id="@+id/merchants_Register_UserAvater"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_launcher" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/merchants_Register_NickName"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp" >
 
-        <EditText
-            android:id="@+id/merchants_Register_NickName"
-            android:layout_width="0dip"
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/merchants_Register_NickName"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#FF000000" />
+
+            <EditText
+                android:id="@+id/merchants_Register_NickName"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="#FFF5EE"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:hint="@string/merchants_Register_NickName"
+                android:paddingLeft="10dip"
+                android:singleLine="true" >
+            </EditText>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/merchants_Register_NickName"
-            android:singleLine="true" >
-        </EditText>
-    </LinearLayout>
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+            <TextView
+                android:id="@+id/TextView01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/merchants_Register_Email"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#FF000000" />
 
-        <TextView
-            android:id="@+id/TextView01"
-            android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/merchants_Register_Email"
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="#FFF5EE"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:hint="@string/merchants_Register_Email"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="10dip"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/merchants_Register_Email"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp" >
 
-        <EditText
-            android:id="@+id/merchants_Register_Email"
-            android:layout_width="fill_parent"
+            <TextView
+                android:id="@+id/TextView02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/merchants_Register_Phone_First"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#FF000000" />
+
+            <EditText
+                android:id="@+id/merchants_Register_Phone_First"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="#FFF5EE"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:hint="@string/merchants_Register_Phone_First"
+                android:inputType="phone"
+                android:paddingLeft="10dip"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/merchants_Register_Email"
-            android:inputType="textEmailAddress"
-            android:singleLine="true" />
-    </LinearLayout>
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+            <TextView
+                android:id="@+id/TextView03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/merchants_Register_Phone_Second"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#FF000000" />
 
-        <TextView
-            android:id="@+id/TextView02"
-            android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/merchants_Register_Phone_Sceond"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="#FFF5EE"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:hint="@string/merchants_Register_Phone_Second"
+                android:inputType="phone"
+                android:paddingLeft="10dip"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/merchants_Register_Phone_First"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp" >
 
-        <EditText
-            android:id="@+id/merchants_Register_Phone_First"
-            android:layout_width="fill_parent"
+            <TextView
+                android:id="@+id/TextView04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/merchants_Register_Pswd"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#FF000000" />
+
+            <EditText
+                android:id="@+id/merchants_Register_Pswd"
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="#FFF5EE"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:hint="@string/merchants_Register_Pswd"
+                android:inputType="textPassword"
+                android:paddingLeft="10dip"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/merchants_Register_Phone_First"
-            android:inputType="phone"
-            android:singleLine="true" />
-    </LinearLayout>
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+            <TextView
+                android:id="@+id/TextView05"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/merchants_Register_VerifyPswd"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#FF000000" />
 
-        <TextView
-            android:id="@+id/TextView03"
-            android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/merchants_Register_VerifyPswd"
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="#FFF5EE"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:hint="@string/merchants_Register_VerifyPswd"
+                android:inputType="textPassword"
+                android:paddingLeft="10dip"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/merchants_Register_Phone_Second"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp" >
 
-        <EditText
-            android:id="@+id/merchants_Register_Phone_Sceond"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/merchants_Register_Phone_Second"
-            android:inputType="phone"
-            android:singleLine="true" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/TextView06"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/merchants_Register_MarketingCode"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#FF000000" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/TextView04"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/merchants_Register_Pswd"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <EditText
-            android:id="@+id/merchants_Register_Pswd"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/merchants_Register_Pswd"
-            android:inputType="textPassword"
-            android:singleLine="true" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/TextView05"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/merchants_Register_VerifyPswd"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <EditText
-            android:id="@+id/merchants_Register_VerifyPswd"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/merchants_Register_VerifyPswd"
-            android:inputType="textPassword"
-            android:singleLine="true" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/TextView06"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/merchants_Register_MarketingCode"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <EditText
-            android:id="@+id/merchants_Register_MarketingCode"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/merchants_Register_MarketingCode"
-            android:singleLine="true" />
+            <EditText
+                android:id="@+id/merchants_Register_MarketingCode"
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="#FFF5EE"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:hint="@string/merchants_Register_MarketingCode"
+                android:paddingLeft="10dip"
+                android:singleLine="true" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

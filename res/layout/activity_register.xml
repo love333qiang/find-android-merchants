@@ -12,7 +12,10 @@
         android:gravity="center"
         android:orientation="vertical" >
 
-        <include layout="@layout/include_registeravatar"/>
+        <include
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            layout="@layout/include_registeravatar" />
         
         <include
             android:id="@+id/layout_Register_First"

@@ -68,9 +68,15 @@
         <item>蛋糕</item>
     </string-array>
 
+    <!-- 商品的包装方式 -->
+    <string-array name="goods_parytype">
+        <item>散装</item>
+        <item>零装</item>
+    </string-array>
+
     <!-- 选择图片的来源 -->
     <string name="goods_choiseMsg">选择图片来源</string>
-   <!-- 选择图片的来源的方式 -->
+    <!-- 选择图片的来源的方式 -->
     <string-array name="goods_choisePicType">
         <item>图库选取</item>
         <item>相机拍摄</item>

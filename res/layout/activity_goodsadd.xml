@@ -88,18 +88,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="商品属性"
+                    android:text="商品分类"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="#FF000000" />
 
                 <TextView
-                    android:id="@+id/textView1"
+                    android:id="@+id/goods_category"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:background="#FFF5EE"
                     android:gravity="center_vertical"
+                    android:drawableRight="@drawable/arrow_right"
                     android:paddingLeft="10dp"
                     android:text="居家旅行"
                     android:textColor="#FF000000" />
@@ -127,7 +128,7 @@
                     android:layout_marginLeft="10dip"
                     android:layout_marginRight="10dip"
                     android:background="#FFF5EE"
-                    android:drawableRight="@android:drawable/presence_busy"
+                    android:drawableRight="@drawable/arrow_right"
                     android:ems="10"
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
@@ -197,7 +198,8 @@
                     android:background="#FFF5EE"
                     android:ems="10"
                     android:gravity="center_vertical"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:paddingLeft="10dp" />
 
                 <TextView
                     android:id="@+id/textView11"

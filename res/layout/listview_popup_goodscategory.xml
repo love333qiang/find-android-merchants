@@ -5,10 +5,13 @@
     android:orientation="vertical" >
 
     <ListView
-        android:id="@+id/goods_category"
-        android:cacheColorHint="#00000000"
+        android:id="@+id/lv_goods_category"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:background="@drawable/list_corner_border"
+        android:cacheColorHint="#00000000"
+        android:divider="@drawable/list_line"
+        android:scrollbars="none" >
     </ListView>
 
 </LinearLayout>

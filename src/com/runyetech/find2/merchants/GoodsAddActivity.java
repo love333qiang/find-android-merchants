@@ -6,17 +6,26 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
@@ -39,6 +48,8 @@ public class GoodsAddActivity extends Activity {
 	private TextView textView_goods_ParkType;
 	/** 商品生产日期 */
 	private TextView textView_goods_ProduceData;
+	/** 商品的分类 */
+	private TextView textView_goods_Category;
 	/** 商品的展示图片的数组 */
 	private ImageView[] imageView_goodsPic;
 	/** 选择商品图片的按钮数组 */
@@ -73,11 +84,16 @@ public class GoodsAddActivity extends Activity {
 	private int mYear, mMonth, mDay;
 	/** 声明一个独一无二的标识，来作为要显示DatePicker的Dialog的ID： */
 	private static final int DATE_DIALOG_ID = 0;
+	/** 选择商品分类的Pop */
+	private PopupWindow window;
+
+	private String[] items_goods_category;
+	private String[] items_goods_parkType;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_goodsaddtest);
+		setContentView(R.layout.activity_goodsadd);
 
 		initUI();
 	}
@@ -86,6 +102,9 @@ public class GoodsAddActivity extends Activity {
 
 		isHasInvoice = true;
 		isHasRepair = true;
+
+		items_goods_category = getResources().getStringArray(R.array.goods_category);
+		items_goods_parkType = getResources().getStringArray(R.array.goods_parytype);
 
 		apiParams = new String[9];
 		listener = new ClickListener();
@@ -97,6 +116,9 @@ public class GoodsAddActivity extends Activity {
 
 		textView_goods_ProduceData = (TextView) findViewById(R.id.goods_ProduceData);
 		textView_goods_ProduceData.setOnClickListener(listener);
+
+		textView_goods_Category = (TextView) findViewById(R.id.goods_category);
+		textView_goods_Category.setOnClickListener(listener);
 
 		editText_GoodsInfo = new EditText[9];
 		editText_GoodsInfo[0] = (EditText) findViewById(R.id.goods_Brand);
@@ -242,6 +264,12 @@ public class GoodsAddActivity extends Activity {
 			case R.id.goods_ProduceData:
 				showDialog(DATE_DIALOG_ID);
 				break;
+			case R.id.goods_category:
+				createPopup(v, items_goods_category);
+				break;
+			case R.id.goods_ParkType:
+				createPopup(v, items_goods_parkType);
+				break;
 			case R.id.goods_ChoiseGoodsPic_0:
 				createDialog();
 				whichPic = 0;
@@ -331,5 +359,98 @@ public class GoodsAddActivity extends Activity {
 			return new DatePickerDialog(this, mDateSetListener, mYear, mMonth, mDay);
 		}
 		return null;
+	}
+
+	/**
+	 * 根据父控件的位置创建一个PopupWindow
+	 * 
+	 * @param parent
+	 *            父控件
+	 */
+	private void createPopup(View parent, String[] items) {
+		LayoutInflater lay = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		View v = lay.inflate(R.layout.listview_popup_goodscategory, null);
+
+		ListView listView_Catgegory = (ListView) v.findViewById(R.id.lv_goods_category);
+		// listView_Catgegory.setAdapter(new ArrayAdapter<String>(this,
+		// android.R.layout.simple_list_item_1, items));
+		listView_Catgegory.setAdapter(new MyBaseAdapter(items));
+		listView_Catgegory.setOnItemClickListener(new ItemClickListener(items));
+
+		window = new PopupWindow(v, textView_goods_Category.getWidth(), 350);
+		window.setFocusable(true);
+		window.setBackgroundDrawable(new BitmapDrawable());
+		window.setOutsideTouchable(true);
+		window.update();
+		showPop(parent);
+	}
+
+	/**
+	 * 显示或者隐藏PopUpWindow
+	 * 
+	 * 如果显示就隐藏了，如果隐藏就根据父控件的位置去显示
+	 * 
+	 * @param parent
+	 *            父控件
+	 */
+	private void showPop(View parent) {
+		if (window.isShowing()) {
+			window.dismiss();
+		} else {
+			window.showAsDropDown(parent);
+		}
+	}
+
+	/**
+	 * @author YangFan ListView的Item的点击事件监听
+	 */
+	class ItemClickListener implements OnItemClickListener {
+		String[] items;
+
+		public ItemClickListener(String[] items) {
+			// TODO Auto-generated constructor stub
+			this.items = items;
+		}
+
+		@Override
+		public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
+			textView_goods_Category.setText(items[position]);
+		}
+	}
+
+	@Override
+	protected void onStop() {
+		super.onStop();
+		window = null;// 退出是让PopUp为NULL；
+	}
+
+	class MyBaseAdapter extends BaseAdapter {
+		String[] items;
+
+		public MyBaseAdapter(String items[]) {
+			this.items = items;
+		}
+
+		@Override
+		public int getCount() {
+			return items.length;
+		}
+
+		@Override
+		public Object getItem(int arg0) {
+			return null;
+		}
+
+		@Override
+		public long getItemId(int arg0) {
+			return 0;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			convertView = GoodsAddActivity.this.getLayoutInflater().inflate(R.layout.item_popup_goodscategory, null);
+			((TextView) convertView.findViewById(R.id.tv_pop)).setText(items[position]);
+			return convertView;
+		}
 	}
 }

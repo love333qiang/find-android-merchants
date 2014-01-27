@@ -48,7 +48,7 @@ public class MainActivity extends Activity {
 		public void onClick(View v) {
 			switch (v.getId()) {
 			case R.id.addGoods:
-				Intent intent = new Intent(MainActivity.this, GoodsCategoryActivity.class);
+				Intent intent = new Intent(MainActivity.this, GoodsAddActivity.class);
 				startActivity(intent);
 				break;
 			}

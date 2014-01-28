@@ -25,6 +25,7 @@ public class Find2MerchantsWebService {
 	 */
 	public void requestLogin(RequestParams params, JsonHttpResponseHandler responseHandler) {
 		AsyncHttpClient client = new AsyncHttpClient();
+		client.addHeader("Authorization", "Basic YW5kcm9pZENsaWVudDpOZXB0dW5l'");
 		client.post(URLPathUtil.LOGIN_URLPAHT, params, responseHandler);
 	}
 
@@ -38,7 +39,7 @@ public class Find2MerchantsWebService {
 	 */
 	public void requestRegister(RequestParams params, JsonHttpResponseHandler responseHandler) {
 		AsyncHttpClient client = new AsyncHttpClient();
-		client.post("", params, responseHandler);
+		client.post(URLPathUtil.REGISTER_URLPATH, params, responseHandler);
 	}
 
 	/**

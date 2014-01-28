@@ -10,9 +10,7 @@ import android.widget.Button;
 import com.runyetech.find2_android_merchants.R;
 
 /**
- * @author YangFan
- * 
- *         商户登录成功以后的页面
+ * @author YangFan 商户登录成功以后的页面
  * 
  */
 public class MainActivity extends Activity {

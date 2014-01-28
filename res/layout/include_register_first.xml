@@ -37,9 +37,9 @@
                 android:background="#FFF5EE"
                 android:ems="10"
                 android:gravity="center_vertical"
-                android:hint="@string/merchants_Register_NickName"
                 android:paddingLeft="10dip"
-                android:singleLine="true" >
+                android:singleLine="true"
+                android:text="大凡哥哥" >
             </EditText>
         </LinearLayout>
 
@@ -69,7 +69,8 @@
                 android:hint="@string/merchants_Register_Email"
                 android:inputType="textEmailAddress"
                 android:paddingLeft="10dip"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:text="myroid@foxmail.com" />
         </LinearLayout>
 
         <LinearLayout
@@ -98,7 +99,8 @@
                 android:hint="@string/merchants_Register_Phone_First"
                 android:inputType="phone"
                 android:paddingLeft="10dip"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:text="18636160875" />
         </LinearLayout>
 
         <LinearLayout
@@ -127,7 +129,8 @@
                 android:hint="@string/merchants_Register_Phone_Second"
                 android:inputType="phone"
                 android:paddingLeft="10dip"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:text="18636160875" />
         </LinearLayout>
 
         <LinearLayout
@@ -156,7 +159,8 @@
                 android:hint="@string/merchants_Register_Pswd"
                 android:inputType="textPassword"
                 android:paddingLeft="10dip"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:text="Myroid7097" />
         </LinearLayout>
 
         <LinearLayout
@@ -185,7 +189,8 @@
                 android:hint="@string/merchants_Register_VerifyPswd"
                 android:inputType="textPassword"
                 android:paddingLeft="10dip"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:text="Myroid7097" />
         </LinearLayout>
 
         <LinearLayout
@@ -213,7 +218,8 @@
                 android:gravity="center_vertical"
                 android:hint="@string/merchants_Register_MarketingCode"
                 android:paddingLeft="10dip"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:text="0351-00001" />
         </LinearLayout>
     </LinearLayout>
 

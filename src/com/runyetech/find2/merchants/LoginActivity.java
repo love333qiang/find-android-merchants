@@ -1,20 +1,20 @@
 package com.runyetech.find2.merchants;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.runyetech.find2.merchants.util.LogInfoPrint;
+import com.runyetech.find2.merchants.util.MySPUtil;
 import com.runyetech.find2.merchants.webservice.Find2MerchantsWebService;
 import com.runyetech.find2_android_merchants.R;
 
@@ -34,6 +34,7 @@ public class LoginActivity extends Activity {
 	private Button button_Register;
 	/** 按键监听类 */
 	private ClickListener listener;
+	private SharedPreferences sp;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,9 @@ public class LoginActivity extends Activity {
 	 * 初始化控件
 	 */
 	private void initUI() {
+
+		sp = getSharedPreferences("tyfind", 0);
+		MySPUtil.copyPicFirstRun(this, sp);
 
 		// LocationInfo info = LocationService.AllGet(this);
 		// System.out.println(info.getLat());
@@ -97,7 +101,7 @@ public class LoginActivity extends Activity {
 		userName = editText_UserName.getText().toString().trim();
 		userPswd = editText_UserPswd.getText().toString().trim();
 		if (userName.length() > 0) {
-			params.put("email", userName);
+			params.put("username", "merchant/" + userName);
 		} else {
 			editText_UserName.setError("信息不能为空");
 			return null;
@@ -108,6 +112,7 @@ public class LoginActivity extends Activity {
 			editText_UserPswd.setError("信息不能为空");
 			return null;
 		}
+		params.put("grant_type", "password");
 		return params;
 	}
 
@@ -131,13 +136,11 @@ public class LoginActivity extends Activity {
 			@Override
 			public void onSuccess(int statusCode, org.json.JSONObject response) {
 				dealwithSuccessJsonResponse(response);
-				LogInfoPrint.i(true, "登录成功");
 			}
 
 			@Override
 			public void onFailure(java.lang.Throwable e, org.json.JSONObject errorResponse) {
 				dealWithFailedJsonResponse(errorResponse);
-				LogInfoPrint.w(true, "登录失败");
 			}
 		});
 	}
@@ -148,19 +151,21 @@ public class LoginActivity extends Activity {
 	 * @param response
 	 */
 	private void dealwithSuccessJsonResponse(JSONObject response) {
-		try {
-			if (response.getBoolean("succ")) {
-				Find2MerchantsApplication.getInstance().saveUserInformation(response);
-				Intent intent = new Intent();
-				intent.setClass(this, MainActivity.class);
-				startActivity(intent);
-				finish();
-			} else {
-				Toast.makeText(this, getString(R.string.activity_login_toast_login_error), Toast.LENGTH_SHORT).show();
-			}
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
+		// try {
+		// if (response.getBoolean("succ")) {
+		LogInfoPrint.i(true, "登录成功");
+		LogInfoPrint.i(true, response.toString());
+		Find2MerchantsApplication.getInstance().saveUserInformation(response);
+		Intent intent = new Intent(this, MainActivity.class);
+		startActivity(intent);
+		finish();
+		// } else {
+		// LogInfoPrint.i(true, "登录失败");
+		// LogInfoPrint.i(true, response.toString());
+		// }
+		// } catch (JSONException e) {
+		// e.printStackTrace();
+		// }
 	}
 
 	/**
@@ -169,6 +174,6 @@ public class LoginActivity extends Activity {
 	 * @param response
 	 */
 	private void dealWithFailedJsonResponse(JSONObject response) {
-		Toast.makeText(this, getString(R.string.activity_login_toast_network_error), Toast.LENGTH_SHORT).show();
+		LogInfoPrint.w(true, "登录失败");
 	}
 }

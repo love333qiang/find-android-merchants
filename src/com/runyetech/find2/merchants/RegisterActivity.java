@@ -1,7 +1,10 @@
 package com.runyetech.find2.merchants;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Calendar;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
@@ -24,6 +27,8 @@ import android.widget.TextView;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.runyetech.find2.merchants.util.LogInfoPrint;
+import com.runyetech.find2.merchants.util.LogInfoToast;
 import com.runyetech.find2.merchants.util.MyDailog;
 import com.runyetech.find2.merchants.util.PhotosUtil;
 import com.runyetech.find2.merchants.webservice.Find2MerchantsWebService;
@@ -37,11 +42,22 @@ public class RegisterActivity extends Activity {
 	/**
 	 * EditText数组，在点击下一步按钮判断值是否为空
 	 * 
-	 * 0:商户昵称；1：邮箱；2：手机号码；3：紧急联系人号码；4：密码；5：确认密码；6：营销代码
+	 * 0:商户昵称；1：邮箱；2：手机号码；3：紧急联系人号码；4：密码；5：营销代码
 	 * 
-	 * 7：公司名称；8:企业名称；9：营业执照所在地；10：店铺地址
+	 * 6：公司名称；7:企业名称；8：营业执照所在地；9：店铺地址
 	 * */
 	private EditText[] editText_Register;
+	String[] params1 = new String[] { "name", // 名称
+			"email",// 电邮
+			"phone_num",// 电话号码
+			"urgency_phone_num",// 紧急电话号码
+			"password",// 密码
+			"marketing_code",// 商店代码
+			"company_name",// 公司名称
+			"firmname", // 企业名称
+			"license_location", // 执照所在地
+			"address",// 执照所在地
+	};
 	/** 营业期限 */
 	private TextView tv_Deadline;
 	/** 图像数组 0：商户头像；1：营业执照扫描件 */
@@ -76,11 +92,7 @@ public class RegisterActivity extends Activity {
 
 		listener = new ClickListener();
 
-		// Location l = LocationService.getMyLocation(this);
-		// LogInfoToast.showToast(true, this, l.getLatitude() + "");
-		// LogInfoToast.showToast(true, this, l.getLongitude() + "");
-
-		editText_Register = new EditText[11];
+		editText_Register = new EditText[10];
 		imageView_Register = new ImageView[2];
 
 		tv_Deadline = (TextView) findViewById(R.id.merchants_Register_BusinessDeadline);
@@ -91,12 +103,11 @@ public class RegisterActivity extends Activity {
 		editText_Register[2] = (EditText) findViewById(R.id.merchants_Register_Phone_First);
 		editText_Register[3] = (EditText) findViewById(R.id.merchants_Register_Phone_Sceond);
 		editText_Register[4] = (EditText) findViewById(R.id.merchants_Register_Pswd);
-		editText_Register[5] = (EditText) findViewById(R.id.merchants_Register_VerifyPswd);
-		editText_Register[6] = (EditText) findViewById(R.id.merchants_Register_MarketingCode);
-		editText_Register[7] = (EditText) findViewById(R.id.merchants_Register_ComPanyName);
-		editText_Register[8] = (EditText) findViewById(R.id.merchants_Register_FirmName);
-		editText_Register[9] = (EditText) findViewById(R.id.merchants_Register_License_Address);
-		editText_Register[10] = (EditText) findViewById(R.id.merchants_Register_MarketAddress);
+		editText_Register[5] = (EditText) findViewById(R.id.merchants_Register_MarketingCode);
+		editText_Register[6] = (EditText) findViewById(R.id.merchants_Register_ComPanyName);
+		editText_Register[7] = (EditText) findViewById(R.id.merchants_Register_FirmName);
+		editText_Register[8] = (EditText) findViewById(R.id.merchants_Register_License_Address);
+		editText_Register[9] = (EditText) findViewById(R.id.merchants_Register_MarketAddress);
 
 		imageView_Register[0] = (ImageView) findViewById(R.id.merchants_Register_UserAvater);
 		imageView_Register[1] = (ImageView) findViewById(R.id.merchants_Register_LicensePic);
@@ -142,16 +153,37 @@ public class RegisterActivity extends Activity {
 		for (int i = 0; i < editText.length; i++) {
 			String registerInfo = editText[i].getText().toString().trim();
 			if (registerInfo.length() > 0) {
-				params.add("i", registerInfo);
+				params.add(params1[i], registerInfo);
 			} else {
 				editText[i].setError("内容不能为空");
 				return false;
 			}
 		}
-		params.put("", imageView_Register[0].getDrawable());
-		params.put("", imageView_Register[1].getDrawable());
-		// params.put("", bdlocation.getLatitude());// weidu
-		// params.put("", bdlocation.getLongitude());// jingdu
+		params.put("expiration_date", tv_Deadline.getText().toString().trim());
+
+		// imageView_Register[0].setDrawingCacheEnabled(true);
+		// Bitmap temp_avatar = imageView_Register[0].getDrawingCache(true);
+		// imageView_Register[0].setDrawingCacheEnabled(false);
+		//
+		// imageView_Register[1].setDrawingCacheEnabled(true);
+		// Bitmap temp_license = imageView_Register[0].getDrawingCache(true);
+		// imageView_Register[1].setDrawingCacheEnabled(false);
+		//
+
+		String pngpathdir = android.os.Environment.getExternalStorageDirectory().getPath() + "/tmp_pic_1286.jpg";
+		LogInfoPrint.i(true, pngpathdir);
+		File myFile = new File(pngpathdir);
+		try {
+			params.put("avatar", myFile);
+			params.put("license_img", myFile);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		// params.put("merchant_id", 4);
+		// params.put("latitude", "100");// weidu
+		// params.put("longitude", "200");// jingdu
+
 		return true;
 	}
 
@@ -160,11 +192,12 @@ public class RegisterActivity extends Activity {
 		Find2MerchantsWebService.getInstance().requestRegister(params, new JsonHttpResponseHandler() {
 			public void onSuccess(int statusCode, JSONObject response) {
 				super.onSuccess(statusCode, response);
-				startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+				dealwithSuccessJsonResponse(response);
 			}
 
 			public void onFailure(int statusCode, Throwable e, JSONObject errorResponse) {
 				super.onFailure(statusCode, e, errorResponse);
+				dealWithFailedJsonResponse(errorResponse);
 			}
 		});
 	}
@@ -253,5 +286,33 @@ public class RegisterActivity extends Activity {
 			return new DatePickerDialog(this, mDateSetListener, mYear, mMonth, mDay);
 		}
 		return null;
+	}
+
+	/**
+	 * 登录成功的事件处理
+	 * 
+	 * @param response
+	 */
+	private void dealwithSuccessJsonResponse(JSONObject response) {
+		LogInfoToast.showToast(true, RegisterActivity.this, "请求成功：" + response.toString());
+		LogInfoPrint.i(true, response.toString());
+		try {
+			String back_password = response.getString("password");
+			System.out.println("您注册时的密码：" + back_password);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 登录失败的事件处理
+	 * 
+	 * @param response
+	 */
+	private void dealWithFailedJsonResponse(JSONObject errorResponse) {
+		if (errorResponse != null) {
+			LogInfoPrint.e(true, errorResponse.toString());
+		}
+		LogInfoPrint.e(true, "请求失败");
 	}
 }

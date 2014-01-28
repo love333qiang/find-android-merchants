@@ -44,7 +44,7 @@
                     android:inputType="textEmailAddress"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
-                    android:text="l@gmail.com"
+                    android:text="tyfind@tyfind.com"
                     android:textSize="@dimen/activity_login_input_fontsize" >
                 </EditText>
             </LinearLayout>
@@ -79,6 +79,7 @@
                     android:inputType="textPassword"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
+                    android:text="12345"
                     android:textSize="@dimen/activity_login_input_fontsize" />
             </LinearLayout>
         </LinearLayout>

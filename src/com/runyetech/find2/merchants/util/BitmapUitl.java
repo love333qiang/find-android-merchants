@@ -1,5 +1,6 @@
 package com.runyetech.find2.merchants.util;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -12,10 +13,12 @@ import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.PixelFormat;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Environment;
 
@@ -251,4 +254,60 @@ public class BitmapUitl {
 		return roundCornerBitmap;
 	}
 
+	/**
+	 * 将Bitmap转为二进制流
+	 * 
+	 * @param bitmap
+	 *            Bitmap图片
+	 * @return 二进制流
+	 */
+	public static byte[] getBitmapByte(Bitmap bitmap) {
+		ByteArrayOutputStream out = new ByteArrayOutputStream();
+		bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+		try {
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return out.toByteArray();
+	}
+
+	/**
+	 * 将二进制流转为Bitmap
+	 * 
+	 * @param temp
+	 *            二进制流
+	 * @return 返回Bitmap
+	 */
+	public static Bitmap getBitmapFromByte(byte[] temp) {
+		if (temp != null) {
+			Bitmap bitmap = BitmapFactory.decodeByteArray(temp, 0, temp.length);
+			return bitmap;
+		} else {
+			return null;
+		}
+	}
+
+	/**
+	 * 将drawable转为Bitmap
+	 * 
+	 * @param drawable
+	 *            drawable图片
+	 * @return 返回Bitmap；
+	 */
+	public static Bitmap drawableToBitmap(Drawable drawable) {
+		int width = drawable.getIntrinsicWidth();
+		int height = drawable.getIntrinsicHeight();
+		Bitmap bitmap = Bitmap.createBitmap(width, height,
+				drawable.getOpacity() != PixelFormat.OPAQUE ? Bitmap.Config.ARGB_8888 : Bitmap.Config.RGB_565);
+		Canvas canvas = new Canvas(bitmap);
+		drawable.setBounds(0, 0, width, height);
+		drawable.draw(canvas);
+		return bitmap;
+	}
+
+	// public static drawable bitmapToDrawable(Bitmap bmp) {
+	// return new FastBitmapDrawable(bitmap);
+	// }
 }
